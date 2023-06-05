@@ -1,16 +1,25 @@
-import {Route, Routes,} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Sample from "./Components/Sample";
+import Footer from "./Components/Footer";
+import SearchBar from "./Components/SearchBar";
 
 function App() {
   return (
     <>
-    <div>
-      <Routes>
-        <Route path="/" element={<Sample/>} />
-      </Routes>
-    </div>
+      <div>
+        <SearchBar />
+        <Routes>
+          <Route path="/" element={<Sample />} />
+          <Route path="/home" element={<Sample/>} />
+          <Route path="/opportunity" element={<Sample />} />
+          <Route path="/post" element={<Sample />} />
+          <Route path="/refreshment" element={<Sample />} />
+          <Route path="/profile" element={<Sample />} />
+        </Routes>
+      <Footer />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
