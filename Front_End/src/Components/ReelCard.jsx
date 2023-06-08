@@ -262,7 +262,7 @@ const ReelCard = ({ reel }) => {
   };
 
   return (
-    <div className="w-full h-[800px] overflow-hidden scroll-smooth bg-purple-400">
+    <div className="w-full h-[800px] overflow-scroll scroll-smooth bg-black">
       <div className="flex flex-row">
         <AnimatePresence>
           <motion.div key={reel.id} className="card relative">
@@ -277,7 +277,7 @@ const ReelCard = ({ reel }) => {
                   <source src={reel.video} type="video/mp4" />
                 </video>
               </button>
-              <div className="buttonGroup pt-40 flex flex-col absolute right-0">
+              <div className="buttonGroup mt-52 flex flex-col absolute right-0 bg-white/50 rounded-2xl">
                 <button className="text-4xl my-1" onClick={LikeReel}>
                   {isBookmarked ? (
                     <AiFillHeart className="text-red-600" />
