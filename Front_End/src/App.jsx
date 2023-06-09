@@ -15,7 +15,11 @@ function App( ) {
       <div>
         {/* using condition to move search bar in homePage*/}
         {pageComponent}
+        {/* using condition to move search bar in homePage*/}
+        {pageComponent}
         <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage/>} />
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage/>} />
           <Route path="/opportunity" element={<Sample />} />
