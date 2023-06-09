@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Sample from "./Components/Sample";
 import Footer from "./Components/Footer";
 import SearchBar from "./Components/SearchBar";
-import HomePage from "./Components/home";
+import HomePage from "./Components/HomePage";
 
 
 function App( ) {
