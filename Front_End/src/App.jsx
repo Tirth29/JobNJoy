@@ -3,6 +3,7 @@ import Sample from "./Components/Sample";
 import Footer from "./Components/Footer";
 import SearchBar from "./Components/SearchBar";
 import { Login } from "./Components/Login";
+import { Register } from "./Components/register";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route path="/profile" element={<Sample />} />
         </Routes>
       <Footer /> */}
-      <Login />
+         <Login />
+        {/* <Register /> */}
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import React from "react";
 export const Login = () => {
   return (
     <div className="h-[46.4rem] fixed bg-gradient-to-b from-violet-400 to-fuchsia-100 ">
-      <div className="h-56 mx-16 mt-64 border-none rounded-xl p-3 shadow-2xl backdrop-blur-sm">
+      <div className="h-56 mx-16 mt-64 border-none rounded-xl p-3 shadow-2xl backdrop-blur-sm outline outline-offset-2 bg-gradient-to-b from-violet-400 to-fuchsia-200 outline-purple-400">
         <label htmlFor="Name" className="h-12">
           Name:
         </label>
