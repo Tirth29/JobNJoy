@@ -2,12 +2,13 @@ import { Route, Routes } from "react-router-dom";
 import Sample from "./Components/Sample";
 import Footer from "./Components/Footer";
 import SearchBar from "./Components/SearchBar";
+import { Login } from "./Components/Login";
 
 function App() {
   return (
     <>
       <div>
-        <SearchBar />
+        {/* <SearchBar />
         <Routes>
           <Route path="/" element={<Sample />} />
           <Route path="/home" element={<Sample/>} />
@@ -16,7 +17,8 @@ function App() {
           <Route path="/refreshment" element={<Sample />} />
           <Route path="/profile" element={<Sample />} />
         </Routes>
-      <Footer />
+      <Footer /> */}
+      <Login />
       </div>
     </>
   );
