@@ -19,8 +19,8 @@ function App() {
           <Route path="/profile" element={<Sample />} />
         </Routes>
       <Footer /> */}
-         {/* <Login /> */}
-        <Register />
+         <Login />
+        {/* <Register /> */}
       </div>
     </>
   );

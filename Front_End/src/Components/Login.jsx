@@ -24,11 +24,11 @@ export const Login = () => {
             id="pass"
             placeholder="Password"
           />
-          <button className="border border-purple-400 hover:border-purple-950 p-1 rounded-lg ml-[4.5rem] mt-3">
-            Login
-          </button>
-          <br />
         </div>
+        <div class=" p-1 mt-5 text-center absolte w-24 ml-32 rounded-xl  bg-gradient-to-l from-fuchsia-300 to-purple-600 hover:from-fuchsia-200 hover:to-purple-400 ">
+          <button class=" h-5  rounded-lg text-white hover:text-black">Log In</button>
+        </div>
+          <br />
         <button className="mt-64 ml-12">
           Don't Have an Account ?{" "}
           <button className="underline" onClick={() => navigate("/Register")}>
