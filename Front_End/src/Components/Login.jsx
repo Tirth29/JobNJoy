@@ -2,39 +2,41 @@ import React from "react";
 
 export const Login = () => {
   return (
-    <div className="h-[46.4rem] fixed bg-gradient-to-b from-violet-400 to-fuchsia-100 ">
-      <div className="h-56 mx-16 mt-64 border-none rounded-xl p-3 shadow-2xl backdrop-blur-sm outline outline-offset-2 bg-gradient-to-b from-violet-400 to-fuchsia-200 outline-purple-400">
-        <label htmlFor="Name" className="h-12">
-          Name:
-        </label>
-        <input
-          type="text"
-          name="name"
-          className="h-6 rounded-lg"
-          id="name"
-          placeholder="Enter username:"
-        />
-        <br /><br />
-        <label htmlFor="pass " className="h-12">
-          Password:
-        </label>
-        <input
-          type="password"
-          name="pass"
-          className="h-6 rounded-lg"
-          id="pass"
-          placeholder="Enter password"
-        />
-        <br />
-        <br />
-    
-        <button>
+    <div>
+      <div className="h-[46.4rem] fixed bg-gradient-to-b from-violet-400 to-fuchsia-100 ">
+        <h1 className="font-serif absolute text-5xl px-28 py-32">Login</h1>
+
+        <div className="h-50 mx-16 p-5 mt-64 border-none rounded-xl  shadow-2xl backdrop-blur-sm outline outline-offset-2 bg-gradient-to-b from-violet-400 to-fuchsia-200 outline-purple-400">
+          <input
+            type="text"
+            name="name"
+            className="h-6 rounded-lg px-3 "
+            id="name"
+            placeholder="Username:"
+          />
+          <br />
+          <br />
+
+          <input
+            type="password"
+            name="pass"
+            className="h-6 rounded-lg px-3"
+            id="pass"
+            placeholder="Password"
+          />
+          <button className="border border-purple-400 hover:border-purple-950 p-1 rounded-lg ml-[4.5rem] mt-3">
+            Login
+          </button>
+          <br />
+        </div>
+        <button className="mt-64 ml-12">
           Don't Have an Account ?{" "}
           <button className="underline" onClick={() => navigate("/Register")}>
             Click here
           </button>
         </button>
       </div>
+    
     </div>
   );
 };
