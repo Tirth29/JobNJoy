@@ -7,19 +7,11 @@ import HomePage from "./Components/HomePage";
 
 function App( ) {
 
-  let pageComponent;
-  if(window.location.pathname === '/home' || '/'){pageComponent = null}
-  else {pageComponent = <SearchBar />}
   return (
     <>
       <div>
-        {/* using condition to move search bar in homePage*/}
-        {pageComponent}
-        {/* using condition to move search bar in homePage*/}
-        {pageComponent}
+      {/* <SearchBar /> */}
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/home" element={<HomePage/>} />
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage/>} />
           <Route path="/opportunity" element={<Sample />} />
