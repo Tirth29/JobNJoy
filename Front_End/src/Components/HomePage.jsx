@@ -6,109 +6,9 @@ import logo from "../assets/logo.png"
 import { useNavigate } from "react-router-dom";
 import PostCard from './PostCard';
 import NewPostCard from './NewPostCard';
+import Posts from "./randPost.json";
 
 
-const Posts = [
-    {
-        userprofile:"/Photo/1.JPG",
-        id: 1445,
-        title:"This is post-title",
-        link: "/Photo/1.JPG",
-        username: "user@123",
-        caption: "This is a caption",
-        likes: 9845674,
-        comments: 23,
-        place: "Surat",
-    },
-    {
-        userprofile:"/Photo/1.JPG",
-        id: 2352,
-        title:"This is post-title",
-        link: "/Photo/2.JPG",
-        username: "user@123",
-        caption: "This is a caption",
-        likes: 89901,
-        comments: 23,
-        place: "Surat",
-      },
-      {
-        id: 3,
-        userprofile:"/Photo/1.JPG",
-        title:"This is post-title",
-        link: "/Photo/3.JPG",
-        username: "user@123",
-        caption: "This is a caption",
-        likes: 72213,
-        comments: 23,
-        place: "Surat",
-      },
-      {
-        id: 4,
-        userprofile:"/Photo/1.JPG",
-        title:"This is post-title",
-        link: "/Photo/4.JPG",
-        username: "user@123",
-        caption: "This is a caption",
-        likes: 71231,
-        comments: 23,
-        place: "Surat",
-      },
-      {
-        id: 5,
-        userprofile:"/Photo/1.JPG",
-        title:"This is post-title",
-        link: "/Photo/5.JPG",
-        username: "user@123",
-        caption: "This is a caption",
-        likes: 11723,
-        comments: 23,
-        place: "Surat",
-      },
-      {
-        id: 6,
-        userprofile:"/Photo/1.JPG",
-        title:"This is post-title",
-        link: "/Photo/6.JPG",
-        username: "user@123",
-        caption: "This is a caption",
-        likes: 89723,
-        comments: 23,
-        place: "Surat",
-      },
-      {
-        id: 7,
-        userprofile:"/Photo/1.JPG",
-        title:"This is post-title",
-        link: "/Photo/7.JPG",
-        username: "user@123",
-        caption: "This is a caption",
-        likes: 190723,
-        comments: 23,
-        place: "Surat",
-      },
-      {
-        id: 8,
-        userprofile:"/Photo/1.JPG",
-        title:"This is post-title",
-        link: "/Photo/8.JPG",
-        username: "user@123",
-        caption: "This is a caption",
-        likes: 407223,
-        comments: 23,
-        place: "Surat",
-      },
-      {
-        id: 9,
-        userprofile:"/Photo/1.JPG",
-        title:"This is post-title", 
-        link: "/Photo/9.JPG",
-        username: "user@123",
-        caption: "This is a caption",
-        likes: 111723,
-        comments: 23,
-        place: "Surat",
-      },
-]
 
 const HomePage = () => {
         const navigate = useNavigate();
@@ -135,7 +35,6 @@ const HomePage = () => {
                         <div className="h-14"></div>
                     </div>
                     {/* Footer */}
-                    
 
                 </div>
             </>
