@@ -23,7 +23,7 @@ function Footer() {
       />
         <button className="ml-5 mx-4 h-10" onClick={()=>navigate("/home") }>
           <HomeIcon fontSize="large" />
-        </button>
+      </button>
         <button className="mx-4"  onClick={()=>navigate("/opportunity") }>
           <WorkIcon fontSize="large" />
         </button>

@@ -1,6 +1,7 @@
 const SearchBar = () => {
   return (
-    <div className="flex items-center m-3">
+    <>
+    <div className="flex items-center m-3 ">
       <div className="flex border  border-purple-200 rounded">
         <input
           type="text"
@@ -10,8 +11,11 @@ const SearchBar = () => {
         <button className="px-4 ml-1 text-white bg-purple-600 border-l rounded ">
           Search
         </button>
+
       </div>
+     
     </div>
+    </>
   );
 };
 
