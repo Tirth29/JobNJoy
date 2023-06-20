@@ -12,7 +12,7 @@ function Footer() {
     <>
       {/* <div className="line">
           </div> */}
-<div className="absolute bottom-0 h-12 bg-black">
+<div className="absolute bottom-0 h-12 bg-black w-[inherit]">
       <hr
         style={{
           background: 'black',

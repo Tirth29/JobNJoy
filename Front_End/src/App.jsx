@@ -5,6 +5,8 @@ import Footer from "./Components/Footer";
 import Refreshment from "./Screens/Refreshment";
 import { motion } from "framer-motion";
 import Post from "./Screens/Post";
+import Profile from "./Screens/Profile";
+import EditProfile from "./Screens/EditProfile";
 
 function App() {
   return (
@@ -17,7 +19,8 @@ function App() {
           <Route path="/opportunity" element={<Sample />} />
           <Route path="/post" element={<Post/>} />
           <Route path="/refreshment" element={<Refreshment/>} />
-          <Route path="/profile" element={<Sample />} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/editprofile" element={<EditProfile />} />
         </Routes>
       </div>
       <motion.div
@@ -25,7 +28,7 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        style={{ position: "fixed", bottom: 0, width: "100%" }}
+        style={{ position: "fixed", bottom: 0, width:"100%" }}
       >
         <Footer />
       </motion.div>
