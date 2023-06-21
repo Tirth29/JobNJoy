@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
+
 export const Register = () => {
   const navigate = useNavigate();
   return (
@@ -81,7 +82,7 @@ export const Register = () => {
       </form>
         <div className="mt-[9rem]">
         <button className=" ml-12">
-          Don't Have an Account ?{" "}
+          Already Have an Account ?{" "}
           <button className="underline" onClick={() => navigate("/Login")}>
             Click here
           </button>
