@@ -5,6 +5,7 @@ import SearchBar from "./Components/SearchBar";
 import { Login } from "./Components/Login";
 import { Register } from "./Components/Register";
 import { Forget } from "./Components/Forget";
+// import {Reg2} from "./Components/Reg2";
 
 function App() {
   return (
@@ -21,10 +22,13 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Forget" element={<Forget />} />
+          {/* <Route path="/Reg2" element={<Reg2 />} /> */}
+
         </Routes>
         {/* <Footer />  */}
         {/* <Login /> */}
         <Register />
+        {/* <Reg2/> */}
         {/* <Forget/> */}
       </div>
     </>

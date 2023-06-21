@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -13,8 +14,8 @@ export const Register = () => {
         Create Your Account
       </h1>
       <form action="post">
-        <div className="h-[14rem] w-[14.6rem]  relative mx-14 mt-[14rem] border-none d-flex justify-content-center rounded-xl p-3 shadow-2xl backdrop-blur-sm bg-gradient-to-b from-violet-500 to-fuchsia-200 outline outline-offset-2 outline-purple-700 ">
-          <div className="d-inline-flex ">
+        <div className="h-[14.4rem] w-[14.5rem]  relative mx-16 mt-[14rem] border-none  justify-content-center rounded-xl p-3 shadow-2xl backdrop-blur-sm bg-gradient-to-b from-violet-500 to-fuchsia-200 outline outline-offset-2 outline-purple-700 ">
+          <div className=" ">
             <AccountCircleIcon className="absolute my-1" />
             <input
               type="text"
@@ -26,7 +27,7 @@ export const Register = () => {
             />
           </div>
           <br />
-          <div className="d-inline-flex">
+          <div className="">
             <EmailIcon className="absolute my-1" />
             <input
               type="email"
@@ -38,7 +39,7 @@ export const Register = () => {
             />
           </div>
           <br />
-          <div className="d-inline-flex">
+          <div className="">
             <LockIcon className="absolute my-1" />
             <input
               type="password"
@@ -49,7 +50,7 @@ export const Register = () => {
             />
           </div>
           <br />
-          <div className="d-inline-flex">
+          <div className="">
             <LockIcon className="absolute my-1" />
             <input
               type="password"
@@ -74,20 +75,20 @@ export const Register = () => {
         <label htmlFor="dob">Date Of Birth:</label>
         <input type="date" name="dob" id="dob" className="w-28 bg-transparent" /> */}
         </div>
-        <div class=" p-1 mt-5 text-center absolte w-24 ml-32 rounded-xl  bg-gradient-to-r from-fuchsia-400 to-purple-700 hover:from-fuchsia-200 hover:to-purple-500 ">
-          <button class=" h-5  rounded-lg text-white hover:text-black">
-            Submit
+        <div className=" p-1 mt-5 text-center absolte w-12  ml-36 rounded-full  bg-gradient-to-r from-fuchsia-400 to-purple-400 hover:from-fuchsia-200 hover:to-purple-500 ">
+          <button onClick={() => navigate("/Reg2")}>
+            <ArrowForwardIcon />
           </button>
         </div>
       </form>
-        <div className="mt-[9rem]">
+      <div className="mt-[9rem]">
         <button className=" ml-12">
           Already Have an Account ?{" "}
           <button className="underline" onClick={() => navigate("/Login")}>
             Click here
           </button>
         </button>
-        </div>
+      </div>
     </div>
   );
 };
