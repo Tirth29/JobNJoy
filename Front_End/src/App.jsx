@@ -7,6 +7,10 @@ import { motion } from "framer-motion";
 import Post from "./Screens/Post";
 import Profile from "./Screens/Profile";
 import EditProfile from "./Screens/EditProfile";
+// import SearchBar from "./Components/SearchBar";
+import Opportunity from "./Components/opportunity/opportunity";
+import Company from "./Components/opportunity/parts/company/Company";
+
 
 function App() {
   return (
@@ -16,11 +20,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Sample />} />
           <Route path="/home" element={<Sample/>} />
-          <Route path="/opportunity" element={<Sample />} />
           <Route path="/post" element={<Post/>} />
           <Route path="/refreshment" element={<Refreshment/>} />
+          <Route path="/opportunity" element={<Opportunity />} />
           <Route path="/profile" element={<Profile/>} />
-          <Route path="/editprofile" element={<EditProfile />} />
+          <Route path="/editprofile" element={<EditProfile/>} />
+          <Route path="/opportunity/CompanyPage" element={<Company />} />
         </Routes>
       </div>
       <motion.div
