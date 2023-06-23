@@ -14,7 +14,7 @@ function Comments({visible,onClose,comments}) {
       <div className="w-full m-5 overflow-hidden bg-white rounded h-80">
         <div className="flex justify-center w-full h-10 p-2 text-lg"> Comments</div>
         <hr className="h-0.6 bg-black"></hr>
-        <div className="overflow-scroll scr">
+        <div className="overflow-auto max-h-80">
             <ul>
             {comments?.map((comment) => (
                 <>
