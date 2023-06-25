@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import Post from "./Screens/Post";
 import Profile from "./Screens/Profile";
 import EditProfile from "./Screens/EditProfile";
-// import SearchBar from "./Components/SearchBar";
 import Opportunity from "./Components/opportunity/opportunity";
 import Company from "./Components/opportunity/parts/company/Company";
 
