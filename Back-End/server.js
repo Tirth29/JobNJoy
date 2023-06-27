@@ -4,9 +4,10 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import Connection from './connection/connect.js'
 
+
 const app = express()
 
-const Port = 6000
+const Port = process.env.port
 
 Connection();
 

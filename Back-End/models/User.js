@@ -23,10 +23,6 @@ const UserScheam = mongoose.Schema({
             type:String,
             require:true
         },
-        Dob:{
-            type:new Date(),
-            require:true
-        },
         BioData:{
             type:String,
            
