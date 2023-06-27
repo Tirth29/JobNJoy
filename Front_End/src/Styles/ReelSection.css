@@ -1,0 +1,33 @@
+.reel-content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Adjust the gap between reel items as needed */
+    padding: 10px; /* Adjust the padding as needed */
+  }
+  
+  .track-vertical {
+    position: absolute;
+    width: 8px;
+    right: 2px;
+    top: 2px;
+    bottom: 2px;
+    border-radius: 4px;
+  }
+  
+  .thumb-vertical {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+  
+  .thumb-vertical:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Hide the default scrollbar */
+  .react-custom-scrollbars-hide-scroll {
+    overflow: hidden !important;
+  }
+  
