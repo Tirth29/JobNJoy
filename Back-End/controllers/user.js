@@ -132,3 +132,25 @@ export const updatePassword = asyncError(async (req, res, next) => {
 
 });
 
+export const updateProfilePic = asyncError(async (req, res, next) => {
+  const user = await User.findById(req.user._id);
+
+  const file = getDataUri(req.file);
+  console.log(user.photo.public_id);
+  await cloudinary.v2.uploader.destroy(user.photo.public_id);
+  console.log(user.photo.public_id);
+
+    // add cloudinary here
+    const myCloud = await cloudinary.v2.uploader.upload(file.content);
+    console.log(myCloud);
+    user.photo = {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    };
+    await User.updateOne({ _id: user._id }, { photo: user.photo });
+
+  res.status(200).json({
+     success: true, 
+     message:"Profile pic updated successfully"
+    });
+});
