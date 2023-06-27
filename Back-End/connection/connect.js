@@ -1,14 +1,21 @@
 import mongoose from 'mongoose'
+import { config } from "dotenv";
+config({
+    path: './General.env',
+})
+const URL= process.env.MONGO_URI;
+console.log(process.env.PORT)
 
-const URL= process.env.MONGODB_URL;
 const Connection = async () =>{
     try{
-       await  mongoose.connect(URL,{useUnifiedTopology:true})
+        const {connection}= await  mongoose.connect(URL,{useUnifiedTopology:true},{
+            dbName:"Summer-Project",
+        })
        console.log('Database connected')
-        
-    
+       console.log(`server connected to databse ${connection.host}`);
     }catch(err){
         console.log('Error : ',err);
     }
 }
+
 export default Connection;
