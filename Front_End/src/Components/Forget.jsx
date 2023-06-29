@@ -3,13 +3,12 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
 import LockIcon from "@mui/icons-material/Lock";
 import { useState } from "react";
-import { Hidden } from "@mui/material";
 
 export const Forget = () => {
   const navigate = useNavigate();
   const [hide, setHide] = useState(true);
   const [username, setUsername] = useState("");
-  
+
   const change = () => {
     if (username.trim() !== "") {
       setHide(false);
@@ -23,18 +22,18 @@ export const Forget = () => {
   };
 
   return (
-    <div className="h-[46.4rem] w-full fixed bg-gradient-to-b from-violet-400 to-fuchsia-100 ">
-      <h1 className="font-serif absolute text-3xl px-12 py-20">
-        Get Your Password
-      </h1>
-      <form action="">
-        <div className="h-40 mx-16 px-3 pt-7 mt-64 border-none rounded-xl  shadow-2xl backdrop-blur-sm outline outline-offset-2 bg-gradient-to-b from-violet-400 to-fuchsia-200 outline-purple-400">
-          <div className="d-inline-flex">
-            <AccountCircleIcon className="absolute mt-1" />
+    <div className="h-screen w-full flex items-center justify-center bg-gradient-to-b from-violet-400 to-fuchsia-100">
+      <div className="max-w-md mx-auto p-6 bg-gradient-to-b from-violet-400 to-fuchsia-200 rounded-xl shadow-2xl">
+        <h1 className="font-serif text-3xl text-center pb-8">
+          Get Your Password
+        </h1>
+        <form>
+          <div className="relative mb-8">
+            <AccountCircleIcon className="absolute mt-2 ml-2" />
             <input
               type="text"
               name="name"
-              className="h-8 w-[11.8rem] rounded-lg pl-8"
+              className="h-10 w-full pl-10 rounded-lg"
               id="name"
               placeholder="Username"
               value={username}
@@ -44,30 +43,29 @@ export const Forget = () => {
           </div>
           <br />
           {hide ? (
-            <div className="pt-4 pl-7">
+            <div className="text-center">
               <input type="checkbox" className="m-2" onClick={change} />
-              <button className="text-sm">Get Password</button>
+              <button className="text-sm font-bold">Get Password</button>
             </div>
           ) : (
-            <div className="d-inline-flex">
-              <LockIcon className="absolute mt-[1.7rem]" />
-
+            <div className="relative">
+              <LockIcon className="absolute mt-2 ml-2" />
               <input
                 type="password"
                 name="pass"
-                className="h-8 w-[11.8rem] rounded-lg pl-8 mt-4"
+                className="h-10 w-full pl-10 mt-4 rounded-lg"
                 id="pass"
                 placeholder="Password"
               />
             </div>
           )}
-        </div>
-        <div className=" p-1 mt-5 text-center absolte w-24 ml-32 rounded-xl  bg-gradient-to-l from-fuchsia-300 to-purple-600 hover:from-fuchsia-200 hover:to-purple-400 ">
-          <button className=" h-5  rounded-lg text-white hover:text-black font-bold">
-            Submit
-          </button>
-        </div>
-      </form>
+          <div className="text-center mt-8">
+            <button className="w-32 h-10 rounded-lg bg-gradient-to-l from-fuchsia-300 to-purple-600 hover:from-fuchsia-200 hover:to-purple-400 text-white font-bold">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

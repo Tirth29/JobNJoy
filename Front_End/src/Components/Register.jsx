@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
@@ -31,99 +30,90 @@ export const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (username.trim() === "" || email.trim() === "" || password.trim() === "" || confirmPassword.trim() === "") {
-      alert("Please fill in all the required information");
+    if (password.trim() !== confirmPassword.trim()) {
+      alert("Confirmed password doesn't match");
     } else {
       navigate("/Register2");
     }
   };
 
   return (
-    <div className="h-[46.4rem] w-full fixed bg-gradient-to-b from-violet-400 to-fuchsia-100 ">
-      <h1 className="text-2xl absolute font-mono mt-[5rem] ml-5">
-        Create Your Account
-      </h1>
-      <form onSubmit={handleSubmit}>
-        <div className="h-[14.4rem] w-[14.5rem]  relative mx-16 mt-[14rem] border-none  justify-content-center rounded-xl px-2 py-3 shadow-2xl backdrop-blur-sm bg-gradient-to-b from-violet-500 to-fuchsia-200 outline outline-offset-2 outline-purple-700 ">
-          <div className="d-inline-flex mt-3">
-            <div className="h-8 bg-white rounded-l-lg">
-              <AccountCircleIcon className="bg-white rounded-lg mt-1" />
+    <div className="h-screen w-full flex items-center justify-center bg-gradient-to-b from-violet-400 to-fuchsia-100">
+      <div className="max-w-md mx-auto p-6 bg-gradient-to-b from-violet-400 to-fuchsia-200 rounded-xl shadow-2xl">
+        <h1 className="text-2xl font-mono text-center pb-8">Create Your Account</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="relative mb-4">
+            <div className="absolute flex items-center justify-center h-10 w-10 bg-white rounded-lg">
+              <AccountCircleIcon />
             </div>
             <input
               type="text"
               name="name"
-              className="h-8 w-46 rounded-r-lg"
-              id="name"
-              placeholder="Enter username:"
+              className="pl-12 h-10 w-full rounded-lg"
+              placeholder="Enter username"
               value={username}
               onChange={handleUsernameChange}
               required
             />
           </div>
-          <br />
-          <div className="d-inline-flex mt-3 ">
-            <div className="h-8 bg-white rounded-l-lg">
-              <EmailIcon className="bg-white rounded-lg mt-1 " />
+          <div className="relative mb-4">
+            <div className="absolute flex items-center justify-center h-10 w-10 bg-white rounded-lg">
+              <LockIcon />
             </div>
             <input
               type="email"
-              name="name"
-              className="h-8 w-46   rounded-r-lg"
-              id="name"
-              placeholder="Enter Email id:"
+              name="email"
+              className="pl-12 h-10 w-full rounded-lg"
+              placeholder="Enter Email id"
               value={email}
               onChange={handleEmailChange}
               required
             />
           </div>
-          <br />
-          <div className="d-inline-flex mt-3">
-            <div className="h-8 bg-white rounded-l-lg">
-              <LockIcon className="bg-white rounded-lg mt-1" />
+          <div className="relative mb-4">
+            <div className="absolute flex items-center justify-center h-10 w-10 bg-white rounded-lg">
+              <LockIcon />
             </div>
             <input
               type="password"
-              name="pass"
-              className="h-8  w-46  rounded-r-lg"
-              id="pass"
+              name="password"
+              className="pl-12 h-10 w-full rounded-lg"
               placeholder="Enter password"
               value={password}
               onChange={handlePasswordChange}
               required
             />
           </div>
-          <br />
-          <div className="d-inline-flex mt-3">
-            <div className="h-8 bg-white rounded-l-lg">
-              <LockIcon className="bg-white rounded-lg mt-1" />
+          <div className="relative mb-4">
+            <div className="absolute flex items-center justify-center h-10 w-10 bg-white rounded-lg">
+              <LockIcon />
             </div>
             <input
               type="password"
-              name="pass"
-              className="h-8 w-46  rounded-r-lg"
-              id="pass"
+              name="confirmPassword"
+              className="pl-12 h-10 w-full rounded-lg"
               placeholder="Confirm password"
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
               required
             />
           </div>
-          <br />
-        </div>
-        <div className=" p-1 mt-5 text-center absolte w-12  ml-36 rounded-full  bg-gradient-to-r from-fuchsia-400 to-purple-400 hover:from-fuchsia-200 hover:to-purple-500 ">
-          <button type="submit">
-            <ArrowForwardIcon />
-          </button>
-        </div>
-      </form>
-      <div className="mt-[9rem]">
-        <button className=" ml-12">
-          Already Have an Account ?{" "}
+          <div className="text-center">
+            <button
+              type="submit"
+              className="w-12 h-12 rounded-full bg-gradient-to-r from-fuchsia-400 to-purple-400 hover:from-fuchsia-200 hover:to-purple-500 text-white"
+            >
+              <ArrowForwardIcon />
+            </button>
+          </div>
+        </form>
+        <div className="mt-8 text-center">
+          <p>Already have an account?</p>
           <button className="underline" onClick={() => navigate(-1)}>
             Click here
           </button>
-        </button>
+        </div>
       </div>
     </div>
   );
-};
+}
