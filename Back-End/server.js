@@ -1,14 +1,11 @@
 import {app} from './app.js'
 import Connection from './connection/connect.js'
-<<<<<<< HEAD
+import cloudinary from 'cloudinary'
 
 
-const app = express()
 
-const Port = process.env.port
-=======
-import cloudinary from "cloudinary";
->>>>>>> 181c7a0874e67595e6b8889bdc236743f68e940d
+
+
 
 Connection();
 

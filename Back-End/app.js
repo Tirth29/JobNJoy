@@ -23,8 +23,10 @@ app.use(
 
 // import all routes here 
 import user from "./router/user.js"
+import Router from "./router/router.js";
 
 app.use('/api/user',user);
+app.use('/api/manage',Router)
 
 
 // error middlewares

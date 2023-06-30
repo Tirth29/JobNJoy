@@ -33,19 +33,6 @@ const schema = new mongoose.Schema({
             type:Date,
             // require:true
         },
-<<<<<<< HEAD
-        Gender:{
-            type:String,
-            require:true
-        },
-        BioData:{
-            type:String,
-           
-        },
-        Photo:{
-            type:String,
-            
-=======
         biodata: {
             line1: String,
             line2: String,
@@ -56,7 +43,6 @@ const schema = new mongoose.Schema({
         photo:{
             public_id: String,
             url: String,
->>>>>>> 181c7a0874e67595e6b8889bdc236743f68e940d
         },
         follower:{
             type:Array
