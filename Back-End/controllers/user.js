@@ -1,9 +1,9 @@
 import {User} from "../models/User.js";
 import {asyncError} from "../middleware/error.js";
 import errorHanlder from "../utils/error.js";
+import cloudinary from "cloudinary";
 import { cookieOptions, sendToken } from "../utils/features.js";
 import { getDataUri } from "../utils/features.js";
-import cloudinary from "cloudinary";
 import bcrypt from "bcrypt";
 
 export const signup = asyncError(async (req, res, next) => {
