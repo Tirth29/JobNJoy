@@ -6,14 +6,14 @@ import { Login } from "./Components/Login";
 import { Register } from "./Components/Register";
 import { Forget } from "./Components/Forget";
 import Register2 from "./Components/Register2";
-
+import Home from "./Components/Home";
 function App() {
   return (
     <>
       <div>
         {/* <SearchBar /> */}
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Home />} />
           <Route path="/home" element={<Sample />} />
           <Route path="/opportunity" element={<Sample />} />
           <Route path="/post" element={<Sample />} />
