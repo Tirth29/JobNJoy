@@ -3,6 +3,7 @@ import {OtherUserProfile, getMyProfile, logOut, login, signup, updatePassword, u
 import { singleUpload } from '../middleware/multer.js';
 import { isAuthenticated } from '../middleware/auth.js';
 
+
 const router = express.Router()
 
 // authentication routes
