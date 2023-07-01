@@ -3,6 +3,7 @@ import Sample from "./Components/Sample";
 import Footer from "./Components/Footer";
 import SearchBar from "./Components/SearchBar";
 import HomePage from "./Components/HomePage";
+import Admin from "./Components/Admin";
 
 
 function App( ) {
@@ -18,6 +19,7 @@ function App( ) {
           <Route path="/post" element={<Sample />} />
           <Route path="/refreshment" element={<Sample />} />
           <Route path="/profile" element={<Sample />} />
+          <Route path="/Admin" element={<Admin />} />
         </Routes>
       <Footer />
       </div>
