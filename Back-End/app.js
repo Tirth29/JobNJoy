@@ -24,9 +24,11 @@ app.use(
 // import all routes here 
 import user from "./router/user.js"
 import Router from "./router/router.js";
+import post from "./router/post.js"
 
 app.use('/api/user',user);
 app.use('/api/manage',Router)
 
+app.use('/api/post',post);
 
 // error middlewares

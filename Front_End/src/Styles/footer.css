@@ -1,0 +1,27 @@
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    height: 60px;
+  }
+  
+  .footer-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .footer-button {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }

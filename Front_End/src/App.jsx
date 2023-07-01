@@ -9,6 +9,8 @@ import Profile from "./Screens/Profile";
 import EditProfile from "./Screens/EditProfile";
 import Opportunity from "./Components/opportunity/opportunity";
 import Company from "./Components/opportunity/parts/company/Company";
+import VisitProfile from "./Screens/VisitProfile";
+import PostUpload from "./Screens/PostUpload";
 
 
 function App() {
@@ -20,10 +22,12 @@ function App() {
           <Route path="/" element={<Sample />} />
           <Route path="/home" element={<Sample/>} />
           <Route path="/post" element={<Post/>} />
+          <Route path="/postupload" element={<PostUpload/>} />
           <Route path="/refreshment" element={<Refreshment/>} />
           <Route path="/opportunity" element={<Opportunity />} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/editprofile" element={<EditProfile/>} />
+          <Route path="/visitprofile" element={<VisitProfile/>} />
           <Route path="/opportunity/CompanyPage" element={<Company />} />
         </Routes>
       </div>

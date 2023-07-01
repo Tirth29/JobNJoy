@@ -6,9 +6,16 @@ import InsertCommentOutlinedIcon from "@mui/icons-material/InsertCommentOutlined
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import TurnedInNotOutlinedIcon from "@mui/icons-material/TurnedInNotOutlined";
 import TurnedInOutlinedIcon from "@mui/icons-material/TurnedInOutlined";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Follow from "./opportunity/parts/follow";
 
 function PostCard({ post }) {
+  const navigate = useNavigate();
+  const [follow, setFollow] = useState(false);
+  const setFollowbuton = () => {
+    setFollow(!follow);
+  };
   const [isLike, setIsLike] = useState(false);
   const OnLike = () => {
     setIsLike(!isLike);
@@ -17,13 +24,22 @@ function PostCard({ post }) {
   const OnSave = () => {
     setIsSave(!isSave);
   };
+  const GoToProfile = () => {
+    navigate("/visitprofile");
+  };
+
   return (
     <div>
-      <div className="flex flex-row mt-3 mb-1 ml-2">
+      <div className="flex flex-row mt-3 mb-1 ml-2 ">
         <AccountCircleSharpIcon fontSize="large" />
         <div className="ml-2 flex-col flex">
-          <button className="text-sm font-bold">{post.username}</button>
+          <button className="text-sm font-bold" onClick={GoToProfile} >{post.username}</button>
           <button className="text-xs text-left">{post.place}</button>
+        </div>
+        <div className="right-0 ml-36">
+          <button onClick={setFollowbuton} className="bg-black/80 text-white p-1 rounded-md">
+            {!follow ? "Follow" : "Unfollow"}
+          </button>
         </div>
       </div>
       <div className="picture">
