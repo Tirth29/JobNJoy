@@ -154,3 +154,11 @@ export const updateProfilePic = asyncError(async (req, res, next) => {
      message:"Profile pic updated successfully"
     });
 });
+
+export const OtherUserProfile = asyncError(async (req, res, next) => {
+  const {otheruser} = req.query;
+  console.log(otheruser);
+  const user = await User.find({_id:otheruser});
+  res.status(200).json({ success: true, user });
+
+});

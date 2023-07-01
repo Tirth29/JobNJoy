@@ -33,3 +33,24 @@ export const PostUpload = asyncError(async (req, res, next) => {
     });
 
 });
+
+export const getAllSelfPost = asyncError(async (req, res, next) => {
+  const user = await User.findById(req.user._id);
+  const posts = await Post.find({username:user.username});
+  res.status(200).json({
+    success:true,
+    posts
+  })
+});
+
+export const getOtherUserPost = asyncError( async (req, res, next) => {
+
+  const {user} = req.query;
+  const posts = await Post.find({username:user});
+
+  res.status(200).json({
+    success:true,
+    posts,
+  });
+
+});

@@ -1,29 +1,30 @@
 import mongoose from "mongoose";
-const reelSchema = mongoose.Schema({
-    UserName:{
-        type:String
-    },
-    video:{
-        type:String
-    },
-    caption:{
-        type:String
-    },
-    like:{
-        type:Array
-    },
-    type:{
-        type:String
-    },
-    Comment:
-    {
-        type:Object
-    }
 
-},
-{
-    timestamps:true
-})
+const commentSchema = new mongoose.Schema({
+    comment_text: { type: String, required: true },
+    comment_by: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+  });
 
-const Reels = mongoose.model('Reels',reelSchema) 
-export default Reels;
+const reelSchema = mongoose.Schema(
+  {
+    reel: {
+      public_id: String,
+      url: String,
+    },
+    username: { type: String, required: true },
+    caption: { type: String },
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    comments: [commentSchema],
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
+    },
+  },
+  { timestamps: true }
+);
+
+export const Reels = mongoose.model("Reels", reelSchema);
