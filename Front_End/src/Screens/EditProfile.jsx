@@ -126,7 +126,7 @@ const EditProfile = () => {
             type="text"
             value={line}
             onChange={(e) => handleBioLineChange(e, index)}
-            className="border border-gray-300 px-4 py-2 rounded mb-2"
+            className="border border-gray-300 px-4 py-2 rounded mb-2 lg:mx-5"
           />
         ))}
       </div>

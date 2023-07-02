@@ -2,7 +2,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import ReelCard from "../Components/ReelCard";
 import { useState, useEffect } from "react";
-import {AiOutlineRollback} from "react-icons/ai";
+
+import { useNavigate } from "react-router-dom";
 
 const reels = [
   {
@@ -108,27 +109,12 @@ const reels = [
 ];
 
 function Refreshment() {
-  //   const [scrollbar,setScrollbar] =useState(0);
-  //   const positionRef = React.useRef(0);
-  //   const handleScroll = (e) => {
-  //     const x = e.currentTarget.scrollLeft;
-  //     if (x !== positionRef.current) {
-  //         positionRef.current = x;
-  //         setScrollbar(scrollbar+1);
-  //         console.log('Horizontal scroll event occurred ...');
-  //     }
-  // };
-
-
+  const navigate = useNavigate();
   const [currentVideo, setCurrentVideo] = useState(1);
-
+  
   const stopCurrentVideo = () => {
     setCurrentVideo(null);
   };
-
-  // const stopCurrentVideo = (videoId) => {
-  //   setCurrentVideo(videoId === currentVideo ? null : videoId);
-  // };
 
   const rows = 2; 
 
@@ -155,29 +141,39 @@ function Refreshment() {
     setReels([...reels.slice(0, page * rows)]);
   }, [page]);
 
+
   return (
     <div>
       <div className="header top-0 fixed z-20 flex flex-row bg-black p-1 w-full">
-        <button>
-          <AiOutlineRollback className="font-semibold text-5xl text-white h-10 "/>
-        </button>
-        <button className="rounded-xl bg-white py-0 mr-2 text-black px-2 h-10 text-lg font-semibold ">
+        <button className="rounded-xl bg-white py-0 mr-1 lg:ml-[430px] text-black px-2 h-10 text-lg font-semibold ">
           <p>Funny</p>
         </button>
-        <button className="rounded-xl bg-white py-0 mr-2 text-black px-2 h-10 text-lg font-semibold ">
+        <button className="rounded-xl bg-white py-0 mr-1 lg:ml-10 text-black px-2 h-10 text-lg font-semibold ">
           <p>Coding</p>
         </button>
-        <button className="rounded-xl bg-white py-0 mr-2 text-black px-2 h-10 text-lg font-semibold ">
+        <button className="rounded-xl bg-white py-0 mr-1 lg:ml-10 text-black px-2 h-10 text-lg font-semibold ">
           <p>Cricket</p>
         </button>
-        <button className="rounded-xl bg-white py-0 mr-2 text-black px-2 h-10 text-lg font-semibold ">
-          <p>Dank</p>
+        <button className="rounded-xl bg-white py-0 mr-1 lg:mx-10 text-black px-2 h-10 text-lg font-semibold ">
+          <p>18+</p>
+        </button>
+        <button className="rounded-xl bg-white py-0 mr-1 text-black px-2 h-10 text-lg font-semibold "
+          onClick={()=>navigate("/reelupload")}
+        >
+          <p>Upload Reel</p>
         </button>
       </div>
       <motion.div>
         <AnimatePresence>
-          {reel?.map((reel) => (
-            <ReelCard key={reel.id} reel={reel} stopCurrentVideo={stopCurrentVideo} isCurrentVideo={currentVideo === reel.id} currentVideo={reels.id} setCurrentVideo={setCurrentVideo} />
+          {reel.map((reel) => (
+            <ReelCard
+              key={reel.id}
+              reel={reel}
+              stopCurrentVideo={stopCurrentVideo}
+              isCurrentVideo={currentVideo === reel.id}
+              currentVideo={reels.id}
+              setCurrentVideo={setCurrentVideo}
+            />
           ))}
         </AnimatePresence>
       </motion.div>

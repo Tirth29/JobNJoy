@@ -29,7 +29,7 @@ function PostCard({ post }) {
   };
 
   return (
-    <div>
+    <div className="lg:mx-[500px]" >
       <div className="flex flex-row mt-3 mb-1 ml-2 ">
         <AccountCircleSharpIcon fontSize="large" />
         <div className="ml-2 flex-col flex">
@@ -68,7 +68,7 @@ function PostCard({ post }) {
             <SendOutlinedIcon fontSize="large" />
           </button>
         </div>
-        <div className="save absolute right-0">
+        <div className="save absolute lg:right-[200px] right-0">
           <button onClick={OnSave} className="m-1 right-0 text-black/80">
             {isSave ? (
               <TurnedInOutlinedIcon fontSize="large" />

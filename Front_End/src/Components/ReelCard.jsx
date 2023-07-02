@@ -262,7 +262,7 @@ const ReelCard = ({ reel }) => {
   };
 
   return (
-    <div className="w-full h-[800px] overflow-scroll scroll-smooth bg-black">
+    <div className="w-full h-[800px] lg:w-96 lg:mx-[530px] overflow-scroll scroll-smooth bg-black">
       <div className="flex flex-row">
         <AnimatePresence>
           <motion.div key={reel.id} className="card relative">

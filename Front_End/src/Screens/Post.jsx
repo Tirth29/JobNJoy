@@ -91,8 +91,7 @@ function Post() {
   return (
     <div>
       <PostHeader />
-      <div className="post"></div>
-      <motion.div>
+      <motion.div className="pt-10">
         {
           Posts?.map((post)=>(
             <PostCard key={post.id} post={post} />

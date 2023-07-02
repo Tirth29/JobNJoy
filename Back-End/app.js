@@ -26,7 +26,6 @@ import user from "./router/user.js"
 import post from "./router/post.js"
 import reel from "./router/reel.js"
 import Router from "./router/router.js";
-import post from "./router/post.js"
 
 app.use('/api/user',user);
 app.use('/api/manage',Router)

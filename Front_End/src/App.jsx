@@ -11,6 +11,7 @@ import Opportunity from "./Components/opportunity/opportunity";
 import Company from "./Components/opportunity/parts/company/Company";
 import VisitProfile from "./Screens/VisitProfile";
 import PostUpload from "./Screens/PostUpload";
+import ReelUpload from "./Screens/ReelUpload";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/home" element={<Sample/>} />
           <Route path="/post" element={<Post/>} />
           <Route path="/postupload" element={<PostUpload/>} />
+          <Route path="/reelupload" element={<ReelUpload/>} />
           <Route path="/refreshment" element={<Refreshment/>} />
           <Route path="/opportunity" element={<Opportunity />} />
           <Route path="/profile" element={<Profile/>} />

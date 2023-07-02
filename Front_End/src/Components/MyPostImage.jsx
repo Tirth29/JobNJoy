@@ -28,7 +28,7 @@
 // };
 
 // export default MyPostImage;
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const MyPostImage = ({ post }) => {
   const [showModal, setShowModal] = useState(false);
@@ -64,16 +64,14 @@ const MyPostImage = ({ post }) => {
   }, [showModal]);
 
   return (
-    <div
-      className="bg-white w-1/3"
-      onTouchStart={handleLongPress}
-      onTouchEnd={handleTouchEnd}
-      onMouseDown={handleLongPress}
-      onMouseUp={handleTouchEnd}
-    >
+    <div className="bg-white w-1/3 ">
       <img
         src={post.link}
-        className="h-28 rounded object-contain items-center"
+        className="h-28 lg:h-[350px] rounded object-contain"
+        onTouchStart={handleLongPress}
+        onTouchEnd={handleTouchEnd}
+        onMouseDown={handleLongPress}
+        onMouseUp={handleTouchEnd}
       />
 
       {showModal && (
@@ -86,7 +84,7 @@ const MyPostImage = ({ post }) => {
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <img
                     src={post.link}
-                    className="h-64 rounded object-contain items-center"
+                    className="h-64 lg:h-[500px] rounded object-contain"
                   />
                 </div>
               </div>
@@ -99,4 +97,3 @@ const MyPostImage = ({ post }) => {
 };
 
 export default MyPostImage;
-
