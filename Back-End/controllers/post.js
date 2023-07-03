@@ -52,5 +52,4 @@ export const getOtherUserPost = asyncError( async (req, res, next) => {
     success:true,
     posts,
   });
-
 });

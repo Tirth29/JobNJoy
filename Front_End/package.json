@@ -10,12 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.0",
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.13.3",
+    "@mui/material": "^5.13.5",
+    "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
-    "framer-motion": "^10.12.17",
+    "mime": "^3.0.0",
     "react": "^18.2.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^18.2.0",
@@ -25,7 +26,8 @@
     "react-icons": "^4.9.0",
     "react-image-crop": "^10.1.5",
     "react-player": "^2.12.0",
-    "react-router-dom": "^6.11.2"
+    "react-redux": "^8.1.1",
+    "react-router-dom": "^6.13.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

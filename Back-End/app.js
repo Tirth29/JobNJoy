@@ -30,6 +30,4 @@ import Router from "./router/router.js";
 app.use('/api/user',user);
 app.use('/api/manage',Router)
 app.use('/api/post',post);
-
-// error middlewares
 app.use('/api/reel',reel);
