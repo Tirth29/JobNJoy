@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [text, setText] = useState("");
+  const navigate=useNavigate();
   const message =
     "Introducing an innovative social networking app that combines the best features of leading professional and social platforms. Connect with industry peers and discover career opportunities.";
 
@@ -41,8 +42,16 @@ const Home = () => {
     setCurrentSlide((prevSlide) => (prevSlide - 1 + 3) % 3);
   };
 
+
   return (
     <div className="carousel" style={{ height: "40vh" }}>
+      <button className={`ml-[77rem] absolute z-10 bg-white ${onclick=()=>{navigate("/Login")}}
+            rounded-2xl px-3`} >
+        Sign In
+      </button>
+      <button className={`ml-[84rem] absolute  z-10 bg-white ${onclick=()=>{navigate("/Register")}}  rounded-2xl px-3`}>
+        Sign Up
+      </button>
       <div className="carousel-inner">
         <div className={`carousel-item ${currentSlide === 0 ? "active" : ""}`}>
           <img
