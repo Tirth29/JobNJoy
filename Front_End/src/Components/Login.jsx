@@ -1,18 +1,22 @@
-import React, { useState } from "react";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import{ useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LockIcon from "@mui/icons-material/Lock";
-import EmailIcon from "@mui/icons-material/Email";
+import {LockIcon} from "@mui/icons-material/Lock";
+import {EmailIcon} from "@mui/icons-material/Email";
+import { login } from "../reducer/Actions/UserAction";
+import { useDispatch } from "react-redux";
 
 export const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
+
+
+  // const handleUsernameChange = (e) => {
+  //   setUsername(e.target.value);
+  // };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -22,27 +26,26 @@ export const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = () => {
+  //   // e.preventDefault();
+  //   dispatch(login(email, password));
+  // };
 
-    if (username !== "" || email !== "") {
-      navigate("/Forget");
-    } else {
-      alert("Enter either username or email id");
-    }
-  };
+  const HandleLoginSubmit = () => {
+    dispatch(login(email, password));
+    console.log("Login")
+  }
 
   return (
     <>
       <div className="h-screen flex items-center justify-center bg-gradient-to-b from-violet-400 to-fuchsia-100">
         <div className="max-w-md mx-auto p-6 bg-gradient-to-b from-violet-400 to-fuchsia-200 rounded-xl shadow-2xl">
           <h1 className="font-serif text-5xl text-center pb-8">Login</h1>
-          <form onSubmit={handleSubmit}>
-            <div className="relative mb-2">
+            {/* <div className="relative mb-2">
               <div className="absolute flex items-center justify-center h-10 w-10 bg-white rounded-l-lg">
                 <AccountCircleIcon />
               </div>
-              <input
+              {/* <input
                 type="text"
                 name="username"
                 value={username}
@@ -50,9 +53,9 @@ export const Login = () => {
                 className="pl-12 h-10 w-full rounded-lg"
                 id="username"
                 placeholder="Username"
-              />
-            </div>
-            <h1 className="opacity-50">---------------or----------------</h1>
+              /> */}
+            {/* </div> */}
+            {/* <h1 className="opacity-50">---------------or----------------</h1> */}
             <div className="mt-3">
               <div className="absolute flex items-center justify-center h-10 w-10 bg-white rounded-l-lg">
                 <EmailIcon />
@@ -81,7 +84,7 @@ export const Login = () => {
                 id="password"
                 placeholder="Password"
                 required
-              />
+              />  
             </div>
             <button
               className="text-sm mt-4 ml-12 underline opacity-40 hover:opacity-80"
@@ -92,19 +95,19 @@ export const Login = () => {
 
             <div className="flex justify-center mt-8">
               <button
+              onClick={() => {HandleLoginSubmit()}}
                 type="submit"
                 className="w-32 h-12 rounded-full bg-gradient-to-r from-fuchsia-300 to-purple-600 hover:from-fuchsia-200 hover:to-purple-400 text-white"
               >
                 Log In
               </button>
             </div>
-          </form>
 
           <div className="mt-8 text-center">
-            <p>Don't have an account?</p>
+            <p> Don't have an account?</p>
             <button
               className="underline"
-              onClick={() => navigate("/Register")}
+              onClick={() => navigate("/register")}
             >
               Click here
             </button>
@@ -114,3 +117,4 @@ export const Login = () => {
     </>
   );
 };
+export default Login;

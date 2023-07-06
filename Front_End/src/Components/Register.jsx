@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
-
+import { signup } from "../reducer/Actions/UserAction";
 import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockIcon from "@mui/icons-material/Lock";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
-
+import { useDispatch } from "react-redux";
 const Register = () => {
+  const dispatch=useDispatch();
   const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
+  const [fullname, setFullname] = useState("");
+  const [gender, setGender] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [dob, setDob] = useState("");
+  const [biodata, setBiodata] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
 
   const handleProfilePictureChange = (e) => {
@@ -20,39 +25,54 @@ const Register = () => {
     setProfilePicture(URL.createObjectURL(file));
   };
   const handleUsernameChange = (e) => {
-    setUsername(e.target.value)
+    setUsername(e.target.value);
+  };
+  const handleDobChange = (e) => {
+    setDob(e.target.value);
+  };
+  const handleBiodataChange = (e) => {
+    setBiodata(e.target.value);
+  };
+  const handleFullnameChange = (e) => {
+    setFullname(e.target.value);
+  };
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
+  };
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    dispatch(signup(username,name,gender,email, password,dob,biodata));
+    console.log("registred")
   }
-        const handleEmailChange = (e) => {
-            setEmail(e.target.value);
-          };
-        
-          const handlePasswordChange = (e) => {
-            setPassword(e.target.value);
-          };
-        
-          const handleConfirmPasswordChange = (e) => {
-            setConfirmPassword(e.target.value);
-          };
-        
-          const handleSubmit = (e) => {
-            e.preventDefault();
-        
-            if (password.trim() !== confirmPassword.trim()) {
-              alert("Confirmed password doesn't match");
-            } else {
-              setCurrentSlide(1);
-            }
-          };
-          return (
-            <div className="carousel" style={{ height: "40vh" }}>
-              <div className="carousel-inner">
-                <div className={`carousel-item ${currentSlide === 0 ? "active" : ""}`}>
-                  <div className="h-screen w-full flex items-center justify-center bg-gradient-to-b from-violet-400 to-fuchfrom-violet-400 to-fuchsia-100">
+  const handleNext = (e) => {
+    e.preventDefault();
+
+    if (password.trim() !== confirmPassword.trim()) {
+      alert("Confirmed password doesn't match");
+    } else {
+      setCurrentSlide(1);
+    }
+  };
+  return (
+    <div className="carousel" style={{ height: "40vh" }}>
+      <div className="carousel-inner">
+        <div className={`carousel-item ${currentSlide === 0 ? "active" : ""}`}>
+          <div className="h-screen w-full flex items-center justify-center bg-gradient-to-b from-violet-400 to-fuchfrom-violet-400 to-fuchsia-100">
             <div className="max-w-md mx-auto p-6 bg-gradient-to-b from-violet-400 to-fuchsia-200 rounded-xl shadow-2xl">
               <h1 className="text-2xl font-mono text-center pb-8">
                 Create Your Account
               </h1>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleNext}>
                 <div className="relative mb-4">
                   <div className="absolute flex items-center justify-center h-10 w-10 bg-white rounded-lg">
                     <AccountCircleIcon />
@@ -165,6 +185,8 @@ const Register = () => {
                   type="text"
                   name="fullname"
                   id="fullname"
+                  value={fullname}
+                  onChange={handleFullnameChange}
                   placeholder="Your Full Name"
                   className="px-3 w-full border-2 border-fuchsia-800 h-9 rounded-xl mt-8"
                   required
@@ -178,6 +200,8 @@ const Register = () => {
                   <select
                     id="gender"
                     name="gender"
+                    value={gender}
+                    onChange={handleGenderChange}
                     className="absolute"
                     required
                   >
@@ -195,12 +219,17 @@ const Register = () => {
                     type="date"
                     name=""
                     id=""
+                    value={dob}
+                    onChange={handleDobChange}
                     className="bg-transparent absolute border-1 w-24 ml-3 rounded-xl"
                   />
                 </div>
                 <div className="bg-white mt-4 border-fuchsia-800 border-2 rounded-xl">
                   <div className="card rounded-xl">
-                    <div className="card-header">BioData</div>
+                    <div className="card-header"
+                    value={biodata}
+                    onChange={handleBiodataChange}
+                    >BioData</div>
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item underline">
                         <input
@@ -228,6 +257,7 @@ const Register = () => {
                     type="submit"
                     className="w-36 h-12 rounded-full bg-gradient-to-l from-fuchsia-300 to-purple-600 hover:from-fuchsia-200 hover:to-purple-400 text-white font-bold"
                     value="Submit"
+                    onClick={handleSubmit}
                   />
                 </div>
               </div>

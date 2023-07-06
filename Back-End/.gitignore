@@ -1,2 +1,10 @@
+<<<<<<< HEAD
+node_modules
+text.log
+General.env
+
+
+=======
 /node_modules
 General.env
+>>>>>>> 26de9ce19e3fc62339106b43481d70eba25061b8

@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Sample from "./Components/Sample";
-import Footer from "./Components/Footer";
-import SearchBar from "./Components/SearchBar";
+// import Footer from "./Components/Footer";
+// import SearchBar from "./Components/SearchBar";
 import { Login } from "./Components/Login";
 import Register from "./Components/Register";
 import { Forget } from "./Components/Forget";
@@ -18,9 +18,9 @@ function App() {
           <Route path="/post" element={<Sample />} />
           <Route path="/refreshment" element={<Sample />} />
           <Route path="/profile" element={<Sample />} />
-          <Route path="/Register" element={<Register />} /> 
-           <Route path="/Login" element={<Login />} /> 
-          <Route path="/Forget" element={<Forget />} />
+          <Route path="/register" element={<Register />} /> 
+           <Route path="/login" element={<Login />} /> 
+          <Route path="/forget" element={<Forget />} />
         </Routes>
         {/* <Footer />  */}
         {/* <Login /> */}
