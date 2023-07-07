@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { signup } from "../reducer/Actions/UserAction";
 import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -11,7 +11,7 @@ const Register = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
-  const [fullname, setFullname] = useState("");
+  const [name, setname] = useState("");
   const [gender, setGender] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,8 +33,8 @@ const Register = () => {
   const handleBiodataChange = (e) => {
     setBiodata(e.target.value);
   };
-  const handleFullnameChange = (e) => {
-    setFullname(e.target.value);
+  const handlenameChange = (e) => {
+    setname(e.target.value);
   };
   const handleGenderChange = (e) => {
     setGender(e.target.value);
@@ -183,10 +183,10 @@ const Register = () => {
               <div className="text-black">
                 <input
                   type="text"
-                  name="fullname"
-                  id="fullname"
-                  value={fullname}
-                  onChange={handleFullnameChange}
+                  name="name"
+                  id="name"
+                  value={name}
+                  onChange={handlenameChange}
                   placeholder="Your Full Name"
                   className="px-3 w-full border-2 border-fuchsia-800 h-9 rounded-xl mt-8"
                   required

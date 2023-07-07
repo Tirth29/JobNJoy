@@ -44,7 +44,7 @@ export const signup = (username,name,gender,email, password,dob,biodata) => asyn
             payload: data.message,
           });
           console.log(data.message)
-    }catch(error){
+    }catch(error){  
         dispatch({
             type: "registerFail",
             payload: error.response.data.message,

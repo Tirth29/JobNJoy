@@ -49,7 +49,6 @@ const Home = () => {
         className={`ml-[77rem] absolute z-10 bg-white rounded-2xl px-3`}
         onClick={() => {
           navigate("/login");
-          console.log("hry");
         }}
       >
         Sign In
