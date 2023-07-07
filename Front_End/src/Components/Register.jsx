@@ -3,15 +3,18 @@ import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockIcon from "@mui/icons-material/Lock";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import {useDispatch} from "react-redux";
+import { register } from "../reducer/Actions/UserAction";
 
 export const Register = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleUsernameChange = (e) => {
+  const handleUsernameChange = (e) => { 
     setUsername(e.target.value);
   };
 
@@ -29,7 +32,7 @@ export const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    dispatch(register(username, email, password, confirmPassword));
     if (password.trim() !== confirmPassword.trim()) {
       alert("Confirmed password doesn't match");
     } else {

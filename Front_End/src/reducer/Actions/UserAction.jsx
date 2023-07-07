@@ -48,3 +48,30 @@ export const loadUser = () => async (dispatch) => {
       });
     }
   };
+
+
+  
+export const register = (formData) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "registerRequest",
+    });
+
+    const { data } = await axios.post(`${server}/api/user/new`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      withCredentials: true,
+    });
+
+    dispatch({
+      type: "registerSuccess",
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: "registerFail",
+      payload: error.response.data.message,
+    });
+  }
+};
