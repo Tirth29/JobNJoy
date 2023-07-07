@@ -16,6 +16,7 @@
     "@mui/material": "^5.13.5",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "framer-motion": "^10.12.18",
     "mime": "^3.0.0",
     "react": "^18.2.0",
     "react-custom-scrollbars": "^4.2.1",
@@ -27,7 +28,8 @@
     "react-image-crop": "^10.1.5",
     "react-player": "^2.12.0",
     "react-redux": "^8.1.1",
-    "react-router-dom": "^6.13.0"
+    "react-router-dom": "^6.13.0",
+    "redux": "^4.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

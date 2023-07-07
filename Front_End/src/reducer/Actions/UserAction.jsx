@@ -27,6 +27,32 @@ export const login = (email, password) => async (dispatch) => {
     }
 
 };
+export const signup = (username,name,gender,email, password,dob,biodata) => async (dispatch) => {
+    try{
+        dispatch({
+            type: "registerRequest",
+        })
+        const {data} = await axios.post(`${server}/api/user/register`, {username,name,gender,email, password,dob,biodata},
+        {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        dispatch({
+            type: "registerSuccess",
+            payload: data.message,
+          });
+          console.log(data.message)
+    }catch(error){
+        dispatch({
+            type: "registerFail",
+            payload: error.response.data.message,
+        })
+        console.log(error)
+    }
+
+};
 
 export const loadUser = () => async (dispatch) => {
     try {
@@ -48,30 +74,3 @@ export const loadUser = () => async (dispatch) => {
       });
     }
   };
-
-
-  
-export const register = (formData) => async (dispatch) => {
-  try {
-    dispatch({
-      type: "registerRequest",
-    });
-
-    const { data } = await axios.post(`${server}/api/user/new`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      withCredentials: true,
-    });
-
-    dispatch({
-      type: "registerSuccess",
-      payload: data.message,
-    });
-  } catch (error) {
-    dispatch({
-      type: "registerFail",
-      payload: error.response.data.message,
-    });
-  }
-};

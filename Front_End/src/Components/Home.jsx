@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [text, setText] = useState("");
+  const navigate = useNavigate();
   const message =
     "Introducing an innovative social networking app that combines the best features of leading professional and social platforms. Connect with industry peers and discover career opportunities.";
 
@@ -43,30 +45,62 @@ const Home = () => {
 
   return (
     <div className="carousel" style={{ height: "40vh" }}>
+      <button
+        className={`ml-[77rem] absolute z-10 bg-white rounded-2xl px-3`}
+        onClick={() => {
+          navigate("/login");
+          console.log("hry");
+        }}
+      >
+        Sign In
+      </button>
+      <button
+        className={`ml-[84rem] absolute z-10 bg-white rounded-2xl px-3`}
+        onClick={() => {
+          navigate("/register");
+        }}
+      >
+        Sign Up
+      </button>
       <div className="carousel-inner">
-        <div className={`carousel-item ${currentSlide === 0 ? "active" : ""}`}>
+        <div
+          className={`carousel-item ${
+            currentSlide === 0 ? "active" : ""
+          } h-64`}
+        >
           <img
             src="Back-End/pic/IMG_3827.jpg"
-            className="d-block w-100 bg-slate-600 h-64"
+            className="d-block w-100 bg-slate-600 h-full"
             alt="Slide 1"
           />
         </div>
-        <div className={`carousel-item ${currentSlide === 1 ? "active" : ""}`}>
+        <div
+          className={`carousel-item ${
+            currentSlide === 1 ? "active" : ""
+          } h-64`}
+        >
           <img
             src="Back-End/pic/IMG_3943.jpg"
-            className="d-block w-100 bg-purple-300 h-64"
+            className="d-block w-100 bg-purple-300 h-full"
             alt="Slide 2"
           />
         </div>
-        <div className={`carousel-item ${currentSlide === 2 ? "active" : ""}`}>
+        <div
+          className={`carousel-item ${
+            currentSlide === 2 ? "active" : ""
+          } h-64`}
+        >
           <img
             src="Back-End/pic/IMG_3827.jpg"
-            className="d-block w-100 bg-pink-400 h-64"
+            className="d-block w-100 bg-pink-400 h-full"
             alt="Slide 3"
           />
         </div>
       </div>
-      <button className="carousel-control-prev" onClick={handlePreviousSlide}>
+      <button
+        className="carousel-control-prev"
+        onClick={handlePreviousSlide}
+      >
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Previous</span>
       </button>
@@ -75,7 +109,7 @@ const Home = () => {
         <span className="visually-hidden">Next</span>
       </button>
       <div className="text-box overflow-y-auto px-3 h-80 mt-5">
-        {text && <h1 className="text-center font-mono ">{text}</h1>}
+        {text && <h1 className="text-center font-mono">{text}</h1>}
       </div>
       <div className="container mt-4">
         <div className="flex justify-center">

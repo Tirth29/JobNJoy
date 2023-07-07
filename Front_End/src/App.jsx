@@ -12,15 +12,10 @@ import Company from "./Components/opportunity/parts/company/Company";
 import VisitProfile from "./Screens/VisitProfile";
 import PostUpload from "./Screens/PostUpload";
 import ReelUpload from "./Screens/ReelUpload";
-
-import SearchBar from "./Components/SearchBar";
 import { Login } from "./Components/Login";
-import { Register } from "./Components/Register";
+import Register from "./Components/Register";
 import { Forget } from "./Components/Forget";
-import Register2 from "./Components/Register2";
 import Home from "./Components/Home";
-import { Provider } from "react-redux";
-import { store } from "./reducer/api";
 import { useDispatch } from "react-redux";
 import { loadUser } from "./reducer/Actions/UserAction";
 import { useEffect } from "react";
@@ -48,10 +43,9 @@ function App() {
             <Route path="/visitprofile" element={<VisitProfile />} />
             <Route path="/opportunity/CompanyPage" element={<Company />} />
             <Route path="/" element={<Home />} />
-            <Route path="/Register" element={<Register />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Forget" element={<Forget />} />
-            <Route path="/Register2" element={<Register2 />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/forget" element={<Forget />} />
           </Routes>
         </div>
         <motion.div

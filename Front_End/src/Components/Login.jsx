@@ -42,7 +42,7 @@ export const Login = () => {
       <div className="h-screen flex items-center justify-center bg-gradient-to-b from-violet-400 to-fuchsia-100">
         <div className="max-w-md mx-auto p-6 bg-gradient-to-b from-violet-400 to-fuchsia-200 rounded-xl shadow-2xl">
           <h1 className="font-serif text-5xl text-center pb-8">Login</h1>
-            <div className="relative mb-2">
+            {/* <div className="relative mb-2">
               <div className="absolute flex items-center justify-center h-10 w-10 bg-white rounded-l-lg">
                 <AccountCircleIcon />
               </div>
@@ -55,8 +55,8 @@ export const Login = () => {
                 id="username"
                 placeholder="Username"
               /> */}
-            </div>
-            <h1 className="opacity-50">---------------or----------------</h1>
+            {/* </div> */}
+            {/* <h1 className="opacity-50">---------------or----------------</h1> */}
             <div className="mt-3">
               <div className="absolute flex items-center justify-center h-10 w-10 bg-white rounded-l-lg">
                 <EmailIcon />
@@ -85,7 +85,7 @@ export const Login = () => {
                 id="password"
                 placeholder="Password"
                 required
-              />
+              />  
             </div>
             <button
               className="text-sm mt-4 ml-12 underline opacity-40 hover:opacity-80"
@@ -108,7 +108,7 @@ export const Login = () => {
             <p> Don't have an account?</p>
             <button
               className="underline"
-              onClick={() => navigate("/Register")}
+              onClick={() => navigate("/register")}
             >
               Click here
             </button>
@@ -118,3 +118,4 @@ export const Login = () => {
     </>
   );
 };
+export default Login;

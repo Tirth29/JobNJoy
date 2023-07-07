@@ -52,4 +52,8 @@ export const getOtherUserPost = asyncError( async (req, res, next) => {
     success:true,
     posts,
   });
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 597bab46d1a170b109b174dda1b3db2edf8e304e
