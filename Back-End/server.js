@@ -3,10 +3,6 @@ import Connection from './connection/connect.js'
 import cloudinary from 'cloudinary'
 
 
-
-
-
-
 Connection();
 
 cloudinary.v2.config({

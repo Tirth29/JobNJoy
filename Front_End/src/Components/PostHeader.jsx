@@ -10,16 +10,16 @@ function PostHeader() {
     navigate("/postupload");
   }
   return (
-    <div className='absolute lg:w-full'>
+    <div className='absolute lg:w-full '>
       <div className="icon bg-black flex flex-row py-1 ">
-      <button className='lg:mx-10'>
-          <AiOutlineRollback className="font-semibold text-4xl text-white h-10 "/>
-        </button>
+      {/* <button className='lg:mx-10'>
+          <AiOutlineRollback className="font-semibold text-4xl text-white h-5 lg:h-10 "/>
+        </button> */}
         <button className='text-white lg:ml-72 '>
             <PersonSearchIcon fontSize='large'/>
         </button>
         <input placeholder='Search Profile...' className=' lg:w-80 lg:mx-20 my-1 rounded-lg'/>
-        <button className="btn bg-white lg:mr-80 w-24 my-1 rounded-lg mx-2" onClick={GoTo}>
+        <button className="btn bg-white lg:mr-80 w-32 my-1 rounded-lg mx-2" onClick={GoTo}>
             <p>Post Upload</p>
         </button>
         {/* <button>

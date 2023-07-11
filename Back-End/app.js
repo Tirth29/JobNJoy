@@ -14,12 +14,24 @@ app.get("/", (req, res) => {
     res.send("Working")
 })
 
-app.use(
-    cors({
-        credentials: true,
-        methods:["GET","POST","PUT","DELETE"],
-    })
-)
+app.use(function (req, res, next) {
+    const corsWhitelist = [
+  "http://127.0.0.1:5173",
+  "http://127.0.0.1:5173/",
+  "http://127.0.0.1:5173/login",
+  "http://127.0.0.1:5173/register",
+  "http://127.0.0.1:5173/profile",
+  "http://127.0.0.1:5173/updateprofilepic",
+  "http://127.0.0.1:5173/editprofile"
+    ];
+    if (corsWhitelist.indexOf(req.headers.origin) !== -1) {
+      res.header("Access-Control-Allow-Origin", req.headers.origin);
+      res.header("Access-Control-Allow-Methods", "GET, POST, PUT, HEAD, OPTIONS");
+      res.header("Access-Control-Allow-Headers", "Content-Type");
+      res.header("Access-Control-Allow-Credentials", true);
+    }
+    next();
+  });
 
 // import all routes here 
 import user from "./router/user.js"

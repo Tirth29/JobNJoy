@@ -1,37 +1,43 @@
-import { Route, Routes } from "react-router-dom";
-import Sample from "./Components/Sample";
-import Footer from "./Components/Footer";
-// import SearchBar from "./Components/SearchBar";
-import Refreshment from "./Screens/Refreshment";
-import { motion } from "framer-motion";
-import Post from "./Screens/Post";
-import Profile from "./Screens/Profile";
-import EditProfile from "./Screens/EditProfile";
-import Opportunity from "./Components/opportunity/opportunity";
-import Company from "./Components/opportunity/parts/company/Company";
-import VisitProfile from "./Screens/VisitProfile";
-import PostUpload from "./Screens/PostUpload";
-import ReelUpload from "./Screens/ReelUpload";
-import { Login } from "./Components/Login";
-import Register from "./Components/Register";
-import { Forget } from "./Components/Forget";
-import Home from "./Components/Home";
-import { useDispatch } from "react-redux";
-import { loadUser } from "./reducer/Actions/UserAction";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { loadUser, myAllPost } from './reducer/Actions/UserAction';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Sample from './Components/Sample';
+import Footer from './Components/Footer';
+import Refreshment from './Screens/Refreshment';
+import Post from './Screens/Post';
+import Profile from './Screens/Profile';
+import EditProfile from './Screens/EditProfile';
+import Opportunity from './Components/opportunity/opportunity';
+import Company from './Components/opportunity/parts/company/Company';
+import VisitProfile from './Screens/VisitProfile';
+import PostUpload from './Screens/PostUpload';
+import ReelUpload from './Screens/ReelUpload';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import Forget from './Components/Forget';
+import Home from './Components/Home';
+import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(loadUser());
-  },[dispatch]);
+  // const isAuthenticated = useSelector((state) => state.isAuthenticated);
+  const posts = useSelector((state) => state.posts);
+  console.log(posts)
+  useEffect(() => {
+    dispatch(myAllPost());
+  }, [dispatch]);
+
   return (
     <>
-      
-        <div>
-          {/* <SearchBar /> */}
-          <Routes>
-            <Route path="/" element={<Sample />} />
+      <Routes>
+
+          <>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/forget" element={<Forget />} />
+            {/* <Route path="/" element={<Sample />} /> */}
             <Route path="/home" element={<Sample />} />
             <Route path="/post" element={<Post />} />
             <Route path="/postupload" element={<PostUpload />} />
@@ -42,24 +48,24 @@ function App() {
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/visitprofile" element={<VisitProfile />} />
             <Route path="/opportunity/CompanyPage" element={<Company />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/forget" element={<Forget />} />
-          </Routes>
-        </div>
+          </>
+
+      </Routes>
+
+
         <motion.div
           className="z-50 bg-black text-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          style={{ position: "fixed", bottom: 0, width: "100%" }}
+          style={{ position: 'fixed', bottom: 0, width: '100%' }}
         >
           <Footer />
         </motion.div>
-
+  
     </>
   );
 }
 
 export default App;
+

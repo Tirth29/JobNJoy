@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import LockIcon from "@mui/icons-material/Lock";
 import { useState } from "react";
 
-export const Forget = () => {
+const Forget = () => {
   const navigate = useNavigate();
   const [hide, setHide] = useState(true);
   const [username, setUsername] = useState("");
@@ -69,3 +69,5 @@ export const Forget = () => {
     </div>
   );
 };
+
+export default Forget;

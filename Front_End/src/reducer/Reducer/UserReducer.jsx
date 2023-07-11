@@ -56,8 +56,51 @@ export const userReducer = createReducer({}, (builder) => {
       state.loading = false;
       state.isAuthenticated = false;
       state.error = action.payload;
-    });
-
+    })
+    .addCase("updateProfileRequest", (state,action) => {
+      state.loading = true;
+    })
+    .addCase("updateProfileSuccess", (state, action) => {
+      state.loading=false;
+      state.message=action.payload;
+    })
+    .addCase("updateProfileFail", (state, action) => {
+      state.loading=false;
+      state.error=action.payload;
+    })
+    .addCase("updatePicRequest", (state, action) => {
+      state.loading=true; 
+    })
+    .addCase("updatePicSuccess", (state, action) => {
+      state.loading=false;
+      state.message=action.payload;
+    })
+    .addCase("updatePicFail", (state, action) => {
+      state.loading=false;
+      state.error = action.payload; 
+    })
+    .addCase("updatePostRequest", (state, action) => {
+      state.loading=true; 
+    })
+    .addCase("updatePostSuccess", (state, action) => {
+      state.loading=false;
+      state.message=action.payload;
+    })
+    .addCase("updatePostFail", (state, action) => {
+      state.loading=false;
+      state.error = action.payload; 
+    })
+    .addCase("myAllPostRequest", (state, action) => {
+      state.loading=true; 
+    })
+    .addCase("myAllPostSuccess", (state, action) => {
+      state.loading=false;
+      state.posts=action.payload;
+    })
+    .addCase("myAllPostFail", (state, action) => {
+      state.loading=false;
+      state.error = action.payload;
+    })
   builder.addCase("clearError", (state) => {
     state.error = null;
   });

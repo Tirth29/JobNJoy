@@ -1,16 +1,32 @@
-import React, { useState } from "react";
-import { myPosts } from "./Profile";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadUser, updateProfile, updateProfilePic } from "../reducer/Actions/UserAction";
+import { useNavigate } from "react-router-dom";
+
+// import { myPosts } from "./Profile";
 
 const EditProfile = () => {
-  const [profilePic, setProfilePic] = useState("");
-  const [username, setUsername] = useState("");
-  const [name, setName] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [bioLines, setBioLines] = useState(["", "", "", "", ""]);
+  const { user } = useSelector((state) => state.user);
+  const [name, setName] = useState(user?.name);
+  const [username, setUsername] = useState(user?.username);
+  const [photo, setPhoto] = useState(user?.photo);
+  const [dob, setDob] = useState(user?.dob);
   const [successAlert, setSuccessAlert] = useState(false);
+  const [biodata, setBiodata] = useState(user?.biodata);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(loadUser());
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleProfilePicChange = (e) => {
-    setProfilePic(e.target.files[0]);
+    setPhoto(e.target.files[0]);
   };
 
   const handleUsernameChange = (e) => {
@@ -22,33 +38,43 @@ const EditProfile = () => {
   };
 
   const handleDateOfBirthChange = (e) => {
-    setDateOfBirth(e.target.value);
+    setDob(e.target.value);
+  };
+  const handleBioLineChange = (e, lineIndex) => {
+    const updatedBiodata = { ...biodata };
+    updatedBiodata[`line${lineIndex + 1}`] = e.target.value;
+    setBiodata(updatedBiodata);
   };
 
-  const handleBioLineChange = (e, index) => {
-    const updatedBioLines = [...bioLines];
-    updatedBioLines[index] = e.target.value;
-    setBioLines(updatedBioLines);
+  // const handleBioLineChange = (e, index) => {
+  // const updatedBioLines = [...bioLines];
+  // updatedBioLines[index] = e.target.value;
+  // setBioLines(updatedBioLines);
+  // };
+  const handlePhotoSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file",photo)
+    dispatch(updateProfilePic(formData));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Perform profile update logic here (e.g., send data to the server)
     // Upon successful update, show the success alert and redirect to the profile page
     // For demonstration purposes, we'll simply log the updated profile data
-
-    console.log("Updated Profile Data:");
-    console.log("Profile Picture:", profilePic);
-    console.log("Username:", username);
-    console.log("Name:", name);
-    console.log("Date of Birth:", dateOfBirth);
-    console.log("Bio Lines:", bioLines);
-
+    dispatch(updateProfile(name, username, dob, biodata));
+    // console.log("Updated Profile Data:");
+    // console.log("Profile Picture:", photo);
+    // console.log("Username:", username);
+    // console.log("Name:", name);
+    // console.log("Date of Birth:", dob);
+    // console.log("Bio Lines:", bioLines);
+    
     setSuccessAlert(true);
     setTimeout(() => {
       setSuccessAlert(false);
-      history.push("/profile"); // Redirect to the profile page
+      navigate("/profile"); // Redirect to the profile page
     }, 3000);
   };
 
@@ -60,19 +86,19 @@ const EditProfile = () => {
       <div className="mb-8">
         <h2 className="text-xl font-bold mb-2">Profile Picture</h2>
         <img
-          src={myPosts[0].link}
+          src={user?.photo?.url}
           alt="Current Profile Picture"
           className="w-32 h-32 mb-2 rounded-full items-center"
         />
 
         {/* Update Profile Picture Form */}
         <h3 className="text-lg font-bold mb-2">Update Profile Picture</h3>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handlePhotoSubmit}>
           <input
             type="file"
             accept="image/*"
-            onChange={handleProfilePicChange}
             required
+            onChange={handleProfilePicChange}
             className="mb-2"
           />
           <button
@@ -89,7 +115,7 @@ const EditProfile = () => {
         <label className="text-lg font-bold mb-2">Username</label>
         <input
           type="text"
-          value={username}
+          placeholder={user?.username}
           onChange={handleUsernameChange}
           className="border border-gray-300 px-4 py-2 rounded w-64"
         />
@@ -100,7 +126,7 @@ const EditProfile = () => {
         <label className="text-lg font-bold mb-2 mr-6">Name</label>
         <input
           type="text"
-          value={name}
+          placeholder={user?.name}
           onChange={handleNameChange}
           className="border border-gray-300 px-4 py-2 rounded w-64"
         />
@@ -111,7 +137,7 @@ const EditProfile = () => {
         <label className="text-lg font-bold mb-2 mr-16">Date of Birth</label>
         <input
           type="date"
-          value={dateOfBirth}
+          value={user?.dob}
           onChange={handleDateOfBirthChange}
           className="border border-gray-300 px-4 py-2 rounded"
         />
@@ -120,15 +146,21 @@ const EditProfile = () => {
       {/* Bio Lines */}
       <div className="mb-8">
         <label className="text-lg font-bold mb-2 mr-10">Bio Lines</label>
-        {bioLines.map((line, index) => (
-          <input
-            key={index}
-            type="text"
-            value={line}
-            onChange={(e) => handleBioLineChange(e, index)}
-            className="border border-gray-300 px-4 py-2 rounded mb-2 lg:mx-5"
-          />
-        ))}
+        {[1, 2, 3, 4, 5].map((lineNumber) => {
+    const lineValue = biodata?.[`line${lineNumber}`] || "";
+    const placeholderText = lineValue ? "Enter bio here" : "";
+    
+    return (
+      <input
+        key={lineNumber}
+        type="text"
+        value={lineValue}
+        placeholder={placeholderText}
+        onChange={(e) => handleBioLineChange(e, lineNumber - 1)}
+        className="border border-gray-300 px-4 py-2 rounded mb-2 lg:mx-5"
+      />
+    );
+  })}
       </div>
 
       {/* Submit Button */}

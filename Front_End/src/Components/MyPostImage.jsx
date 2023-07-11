@@ -66,7 +66,7 @@ const MyPostImage = ({ post }) => {
   return (
     <div className="bg-white w-1/3 ">
       <img
-        src={post.link}
+        src={post.photo.url}
         className="h-28 lg:h-[350px] rounded object-contain"
         onTouchStart={handleLongPress}
         onTouchEnd={handleTouchEnd}
@@ -83,7 +83,7 @@ const MyPostImage = ({ post }) => {
                 {/* header */}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <img
-                    src={post.link}
+                    src={post.photo.url}
                     className="h-64 lg:h-[500px] rounded object-contain"
                   />
                 </div>

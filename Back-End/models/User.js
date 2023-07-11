@@ -70,7 +70,7 @@ schema.methods.comparePassword = async function (enteredPassword) {
   };
 
 schema.methods.generateToken = function(){
-    return jwt.sign({id:this._id},process.env.JWT_SECRET,{expiresIn:1000*60*60*24*15})
+    return jwt.sign({id:this._id},process.env.JWT_SECRET,{expiresIn:1000*60*60*24*10})
 }
 
 export const User = mongoose.model("User", schema);
