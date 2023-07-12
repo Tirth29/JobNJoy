@@ -10,7 +10,7 @@ import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Follow from "./opportunity/parts/follow";
 
-function PostCard({ post }) {
+function PostCard({key, post }) {
   const navigate = useNavigate();
   const [follow, setFollow] = useState(false);
   const setFollowbuton = () => {
@@ -30,21 +30,29 @@ function PostCard({ post }) {
 
   return (
     <div className="lg:mx-[500px]" >
+      {
+        console.log(key) 
+      }{
+        console.log(post)
+      }{
+        console.log(post?.username)
+      }
       <div className="flex flex-row mt-3 mb-1 ml-2 ">
         <AccountCircleSharpIcon fontSize="large" />
         <div className="ml-2 flex-col flex">
-          <button className="text-sm font-bold" onClick={GoToProfile} >{post.username}</button>
-          <button className="text-xs text-left">{post.place}</button>
+          <button className="text-sm font-bold" onClick={GoToProfile} >{post?.username}</button>
+          <button className="text-xs text-left">{post?.location ? post.location : `` }</button>
         </div>
         <div className="right-0 ml-36">
           <button onClick={setFollowbuton} className="bg-black/80 text-white p-1 rounded-md">
             {!follow ? "Follow" : "Unfollow"}
           </button>
+          <button> hello hello </button>
         </div>
       </div>
       <div className="picture">
         <img
-          src={post.link}
+          src={post?.photo?.url}
           alt="post"
           className="w-[330px] h-96 rounded-xl m-3 shadow-2xl"
         />
@@ -82,14 +90,14 @@ function PostCard({ post }) {
         <p>
           Liked by <span className="font-bold">{post.username}</span> and{" "}
           {!isLike ? (
-            <span className="font-bold">{post.likes}</span>
+            <span className="font-bold">{post.likes?.length}</span>
           ) : (
-            <span className="font-bold">{post.likes + 1}</span>
+            <span className="font-bold">{post.likes?.length + 1}</span>
           )}{" "}
           others
         </p>
-        <p>{post.caption}</p>
-        <p>View all {post.comments} comments..</p>
+        <p>{post?.caption}</p>
+        <p>View all {post?.comments} comments..</p>
       </div>
     </div>
   );

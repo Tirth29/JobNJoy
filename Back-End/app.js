@@ -17,6 +17,8 @@ app.get("/", (req, res) => {
 app.use(function (req, res, next) {
     const corsWhitelist = [
   "http://127.0.0.1:5173",
+  "http://localhost:5173",
+  "http://localhost:5173/",
   "http://127.0.0.1:5173/",
   "http://127.0.0.1:5173/login",
   "http://127.0.0.1:5173/register",

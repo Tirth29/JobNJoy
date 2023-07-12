@@ -42,6 +42,16 @@ export const getAllSelfPost = asyncError(async (req, res, next) => {
   })
 });
 
+export const allOtherPost = asyncError(async (req, res, next) => {
+
+  const posts = await Post.find();
+  console.log(posts)
+  res.status(200).json({
+    success:true,
+    posts
+  })
+})
+
 export const getOtherUserPost = asyncError( async (req, res, next) => {
 
   const {user} = req.query;

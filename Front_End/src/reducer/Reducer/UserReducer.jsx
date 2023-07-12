@@ -90,6 +90,17 @@ export const userReducer = createReducer({}, (builder) => {
       state.loading=false;
       state.error = action.payload; 
     })
+    .addCase("updateReelRequest", (state, action) => {
+      state.loading=true; 
+    })
+    .addCase("updateReelSuccess", (state, action) => {
+      state.loading=false;
+      state.message=action.payload;
+    })
+    .addCase("updateReelFail", (state, action) => {
+      state.loading=false;
+      state.error = action.payload; 
+    })
     .addCase("myAllPostRequest", (state, action) => {
       state.loading=true; 
     })
@@ -98,6 +109,17 @@ export const userReducer = createReducer({}, (builder) => {
       state.posts=action.payload;
     })
     .addCase("myAllPostFail", (state, action) => {
+      state.loading=false;
+      state.error = action.payload;
+    })
+    .addCase("otherPostRequest", (state, action) => {
+      state.loading=true; 
+    })
+    .addCase("otherPostSuccess", (state, action) => {
+      state.loading=false;
+      state.otherposts=action.payload;
+    })
+    .addCase("otherPostFail", (state, action) => {
       state.loading=false;
       state.error = action.payload;
     })

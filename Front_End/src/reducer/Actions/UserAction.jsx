@@ -194,13 +194,7 @@ export const updateProfile =
       dispatch({
         type: "updatePostRequest",
       });
-      // console.log(document.cookie);
-      // console.log(document.cookie.get("token"));
-      // const Cookies = document.cookie;
       const { data } = await axios.post(`${server}/api/post/postupload`, formData, {
-        // headers: {
-        //   token:Cookies.get('token')
-        // },
         withCredentials: true,
       });
       
@@ -212,6 +206,30 @@ export const updateProfile =
     } catch (error) {
       dispatch({
         type: "updatePostFail",
+        payload: "Upload FAil",
+      });
+      console.log(error)
+      console.log("Upload Fail")
+    }
+  };
+
+  export const uploadReel = (formData) => async (dispatch) => {
+    try {
+      dispatch({
+        type: "updateReelRequest",
+      });
+      const { data } = await axios.post(`${server}/api/reel/reelupload`, formData, {
+        withCredentials: true,
+      });
+      
+      dispatch({
+        type: "updateReelSuccess",
+        payload: data.message,
+      });
+      console.log(data.message);
+    } catch (error) {
+      dispatch({
+        type: "updateReelFail",
         payload: "Upload FAil",
       });
       console.log(error)
@@ -236,6 +254,30 @@ export const updateProfile =
     } catch (error) {
       dispatch({
         type: "myAllPostFail",
+        payload: "Can't Load Post"
+      });
+      console.log("Can't Load Post")
+      console.log(error)
+    }
+  };
+
+  export const otherPost = () => async (dispatch) => {
+    try {
+      dispatch({
+        type: "otherPostRequest",
+      });
+      const { data } = await axios.get(`${server}/api/post/allotherpost`, {
+        withCredentials: true,
+      });
+      
+      dispatch({
+        type: "otherPostSuccess",
+        payload: data.posts,
+      });
+      console.log(data);
+    } catch (error) {
+      dispatch({
+        type: "otherPostFail",
         payload: "Can't Load Post"
       });
       console.log("Can't Load Post")
