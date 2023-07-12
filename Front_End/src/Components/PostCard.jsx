@@ -8,7 +8,7 @@ import TurnedInNotOutlinedIcon from "@mui/icons-material/TurnedInNotOutlined";
 import TurnedInOutlinedIcon from "@mui/icons-material/TurnedInOutlined";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Follow from "./opportunity/parts/follow";
+
 
 function PostCard({ post }) {
   const navigate = useNavigate();
