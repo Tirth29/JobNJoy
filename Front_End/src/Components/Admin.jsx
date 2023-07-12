@@ -3,12 +3,12 @@ import React from 'react'
 export default function Admin() {
     return (
         <>
-            <div>
+            <div className="max-w-lg mx-auto w-full">
                 <div className="p-2 ">
                     <div className="text-lg text-gray-700 font-bold"> Company Details</div>
                     <hr className="px-2"/>
                 </div>
-                <form className="w-full max-w-lg mx-auto pb-5">
+                <form className=" pb-5">
                     <div className="flex flex-wrap mb-6 -mx-3 p-2">
                         <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0">
                             <label className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" htmlFor="grid-company-name">
