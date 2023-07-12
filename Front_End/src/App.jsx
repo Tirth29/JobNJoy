@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUser, myAllPost } from './reducer/Actions/UserAction';
+import { loadUser, myAllPost, otherPost } from './reducer/Actions/UserAction';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Sample from './Components/Sample';
 import Footer from './Components/Footer';
@@ -21,10 +21,11 @@ import { motion } from 'framer-motion';
 
 function App() {
   const dispatch = useDispatch();
+  // const {otherposts} = useSelector((state) => state.user);
   // const isAuthenticated = useSelector((state) => state.isAuthenticated);
-  const posts = useSelector((state) => state.posts);
-  console.log(posts)
+  // console.log(otherposts)
   useEffect(() => {
+    // dispatch(otherPost());
     dispatch(myAllPost());
   }, [dispatch]);
 
