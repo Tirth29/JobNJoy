@@ -1,46 +1,60 @@
-import{useState} from "react";
+import{useEffect, useState} from "react";
 import MyPostImage from "../Components/MyPostImage";
-export const myPosts = [
-  {
-    id: 1,
-    link: "/Photo/1.JPG",
-  },
-  {
-    id: 2,
-    link: "/Photo/2.JPG",
-  },
-  {
-    id: 3,
-    link: "/Photo/3.JPG",
-  },
-  {
-    id: 4,
-    link: "/Photo/4.JPG",
-  },
-  {
-    id: 5,
-    link: "/Photo/5.JPG",
-  },
-  {
-    id: 6,
-    link: "/Photo/6.JPG",
-  },
-  {
-    id: 7,
-    link: "/Photo/7.JPG",
-  },
-];
-function Profile() {
+import { useDispatch, useSelector } from "react-redux";
+import { otherUserPost } from "../reducer/Actions/UserAction";
+// export const myPosts = [
+//   {
+//     id: 1,
+//     link: "/Photo/1.JPG",
+//   },
+//   {
+//     id: 2,
+//     link: "/Photo/2.JPG",
+//   },
+//   {
+//     id: 3,
+//     link: "/Photo/3.JPG",
+//   },
+//   {
+//     id: 4,
+//     link: "/Photo/4.JPG",
+//   },
+//   {
+//     id: 5,
+//     link: "/Photo/5.JPG",
+//   },
+//   {
+//     id: 6,
+//     link: "/Photo/6.JPG",
+//   },
+//   {
+//     id: 7,
+//     link: "/Photo/7.JPG",
+//   },
+// ];
+function Profile({navigation}) {
+  const dispatch = useDispatch();
+  const {profile} = useSelector((state) => state.user);
+  const Profile = profile;
   const [follow, setFollow] = useState(false);
   const setFollowbuton = () => {
       setFollow(!follow);
   };
-  return (
+  // console.log("1s finished")
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(otherUserPost(Profile[0]?.username));
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+  const {otheruserpost} = useSelector((state) => state.user);
+  // console.log(otheruserpost)
+  return  (
     <div className="flex flex-col lg:flex-row">
       {/* Left Side */}
       <div className="sticky top-0 bg-[#8b41d0] w-full lg:w-[700px] py-4 pl-20 pr-4">
         <img
-          src="/Photo/1.JPG"
+          src={Profile[0]?.photo?.url}
           alt="..."
           className="shadow-xl rounded-full w-48 h-48 lg:w-80 lg:h-80 lg:m-10 align-middle border-none"
         />
@@ -49,19 +63,19 @@ function Profile() {
             <button className="font-semibold text-base text-white px-2 bg-[#9659cf] rounded-lg">
               Post
             </button>
-            <p className="font-semibold text-base  text-black">15</p>
+            <p className="font-semibold text-base  text-black">{otheruserpost?.length}</p>
           </div>
           <div className="flex flex-col justify-start space-x-4 mb-2 lg:justify-start m-2">
             <button className="font-semibold text-base text-white px-2 bg-[#9659cf] rounded-lg">
               Follower
             </button>
-            <p className="font-semibold text-base text-black">15</p>
+            <p className="font-semibold text-base text-black">{Profile[0]?.follower?.length}</p>
           </div>
           <div className="flex flex-col justify-start space-x-4 mb-2 lg:justify-start m-2">
             <button className="font-semibold text-base text-white px-2 bg-[#9659cf] rounded-lg">
               Following
             </button>
-            <p className="font-semibold text-base text-black">15</p>
+            <p className="font-semibold text-base text-black">{Profile[0]?.following?.length}</p>
           </div>
         </div>
         <div className="flex justify-start mb-2 lg:ml-28">
@@ -73,13 +87,13 @@ function Profile() {
             </button>
         </div>
         <div className="pl-4 p-2 bio text-slate-200 text-start lg:text-left">
-          <p>Name</p>
+          <p>{Profile[0]?.name}</p>
           <p>Bio</p>
-          <p>line-1 Web developer</p>
-          <p>line-2 UI/UX Designer</p>
-          <p>line-3 App developer</p>
-          <p>line-4 AI/ML</p>
-          <p>line-5</p>
+          <p>{Profile[0]?.biodata?.line1}</p>
+          <p>{Profile[0]?.biodata?.line2}</p>
+          <p>{Profile[0]?.biodata?.line3}</p>
+          <p>{Profile[0]?.biodata?.line4}</p>
+          <p>{Profile[0]?.biodata?.line5}</p>
         </div>
       </div>
       
@@ -90,7 +104,7 @@ function Profile() {
         </p>
         </div>}
         <div className="flex flex-wrap p-2 pl-4 bg-white">
-        { follow ?  myPosts?.map((post) => (
+        { follow ?  otheruserpost?.map((post) => (
            <MyPostImage post={post} key={post.id} />
           )) : 
           <>

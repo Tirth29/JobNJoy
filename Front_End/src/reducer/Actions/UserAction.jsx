@@ -284,3 +284,49 @@ export const updateProfile =
       console.log(error)
     }
   };
+
+  export const otheruserProfile = (otheruser) => async (dispatch) => {
+    try {
+      dispatch({
+        type: "otherUserProfileRequest",
+      });
+      const { data } = await axios.get(`${server}/api/user/otheruserprofile?otheruser=${otheruser}`, {
+        withCredentials: true,
+      });
+      
+      dispatch({
+        type: "otherUserProfileSuccess",
+        payload: data.user,
+      });
+      // console.log(data);
+    } catch (error) {
+      dispatch({
+        type: "otherUserProfileFail",
+        payload: "Can't Load Profile"
+      });
+      console.log(error)
+    }
+  };
+
+  export const otherUserPost = (otheruser) => async (dispatch) => {
+    try {
+      dispatch({
+        type: "otherUserPostRequest",
+      });
+      const { data } = await axios.get(`${server}/api/post/otheruserpost?user=${otheruser}`, {
+        withCredentials: true,
+      });
+      
+      dispatch({
+        type: "otherUserPostSuccess",
+        payload: data.posts,
+      });
+      // console.log(data.posts);
+    } catch (error) {
+      dispatch({
+        type: "otherUserPostFail",
+        payload: "Can't Load Post"
+      });
+      console.log(error)
+    }
+  };

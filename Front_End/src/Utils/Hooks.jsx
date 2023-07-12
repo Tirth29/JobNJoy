@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 // import { Toast } from "react-native-toast-message";
 import { useSelector } from "react-redux";
-import { loadUser } from "../reducer/Actions/UserAction";
+import { loadUser, otheruserProfile } from "../reducer/Actions/UserAction";
 // import { server } from "../reducer/api";
 import { useNavigate } from 'react-router-dom';
 
@@ -12,21 +12,22 @@ export const useMessageAndErrorUser = (
     navigateTo = "login"
   ) => {
     const navigate = useNavigate();
-    const { loading, message, error } = useSelector((state) => state.user);
+    const { loading, message,error,profile} = useSelector((state) => state.user);
     
     useEffect(() => {
       if (message) {
         navigate(`/${navigateTo}`);
-        // Toast.show({
-        //   type: "success",
-        //   text1: message,
-        // });
         dispatch({
           type: "clearMessage",
         });
         dispatch(loadUser());
       }
+      if (profile) {
+        navigate(`/${navigateTo}`);
+      }
+
     }, [message, dispatch, navigate, navigateTo]);
   
     return loading;
+
   };

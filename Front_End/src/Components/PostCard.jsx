@@ -9,8 +9,12 @@ import TurnedInOutlinedIcon from "@mui/icons-material/TurnedInOutlined";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Follow from "./opportunity/parts/follow";
+import { useDispatch, useSelector } from "react-redux";
+import { otheruserProfile } from "../reducer/Actions/UserAction";
+import { useMessageAndErrorUser } from "../Utils/Hooks";
 
-function PostCard({key, post }) {
+function PostCard({post,navigation }) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [follow, setFollow] = useState(false);
   const setFollowbuton = () => {
@@ -24,19 +28,16 @@ function PostCard({key, post }) {
   const OnSave = () => {
     setIsSave(!isSave);
   };
-  const GoToProfile = () => {
-    navigate("/visitprofile");
+  // const {profile} = getOtherUserProfile(navigation,dispatch,post.username,"visitprofile");
+  // const {loading} = useSelector((state) => state.user);
+  // const loading = useMessageAndErrorUser(navigation,dispatch,"visitprofile");
+  const GoToProfile = async() => {
+    console.log(post.username);
+      await dispatch(otheruserProfile(post.username))
+    navigate("/visitprofile")
   };
-
   return (
     <div className="lg:mx-[500px]" >
-      {
-        console.log(key) 
-      }{
-        console.log(post)
-      }{
-        console.log(post?.username)
-      }
       <div className="flex flex-row mt-3 mb-1 ml-2 ">
         <AccountCircleSharpIcon fontSize="large" />
         <div className="ml-2 flex-col flex">
@@ -47,7 +48,6 @@ function PostCard({key, post }) {
           <button onClick={setFollowbuton} className="bg-black/80 text-white p-1 rounded-md">
             {!follow ? "Follow" : "Unfollow"}
           </button>
-          <button> hello hello </button>
         </div>
       </div>
       <div className="picture">

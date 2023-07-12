@@ -158,7 +158,6 @@ export const updateProfilePic = asyncError(async (req, res, next) => {
 export const OtherUserProfile = asyncError(async (req, res, next) => {
   const {otheruser} = req.query;
   console.log(otheruser);
-  const user = await User.find({_id:otheruser});
+  const user = await User.find({username:otheruser});
   res.status(200).json({ success: true, user });
-
 });

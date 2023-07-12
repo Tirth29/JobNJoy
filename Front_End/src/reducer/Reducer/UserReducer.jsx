@@ -123,6 +123,28 @@ export const userReducer = createReducer({}, (builder) => {
       state.loading=false;
       state.error = action.payload;
     })
+    .addCase("otherUserProfileRequest", (state, action) => {
+      state.loading=true; 
+    })
+    .addCase("otherUserProfileSuccess", (state, action) => {
+      state.loading=false;
+      state.profile=action.payload;
+    })
+    .addCase("otherUserProfileFail", (state, action) => {
+      state.loading=false;
+      state.error = action.payload;
+    })
+    .addCase("otherUserPostRequest", (state, action) => {
+      state.loading=true; 
+    })
+    .addCase("otherUserPostSuccess", (state, action) => {
+      state.loading=false;
+      state.otheruserpost=action.payload;
+    })
+    .addCase("otherUserPostFail", (state, action) => {
+      state.loading=false;
+      state.error = action.payload;
+    })
   builder.addCase("clearError", (state) => {
     state.error = null;
   });
