@@ -10,7 +10,7 @@ import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-function PostCard({key, post }) {
+function PostCard({key,post}) {
   const navigate = useNavigate();
   const [follow, setFollow] = useState(false);
   const setFollowbuton = () => {
@@ -100,6 +100,7 @@ function PostCard({key, post }) {
         <p>View all {post?.comments} comments..</p>
       </div>
     </div>
+    
   );
 }
 
