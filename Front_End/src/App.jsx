@@ -4,7 +4,7 @@ import Footer from "./Components/Footer";
 import SearchBar from "./Components/SearchBar";
 import HomePage from "./Components/HomePage";
 import Admin from "./Components/Admin";
-
+import AddCompany from "./Components/AddCompany";
 
 function App( ) {
 
@@ -19,7 +19,8 @@ function App( ) {
           <Route path="/post" element={<Sample />} />
           <Route path="/refreshment" element={<Sample />} />
           <Route path="/profile" element={<Sample />} />
-          <Route path="/Admin" element={<Admin />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/addcompany" element={<AddCompany />} />
         </Routes>
       <Footer />
       </div>
