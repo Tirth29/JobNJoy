@@ -13,3 +13,9 @@ export const isAuthenticated = asyncError(async (req, res, next) => {
   req.user = await User.findById(decodedData.id);
   next();
 });
+
+export const isAdmin = asyncError(async (req, res, next) => {
+  if (req.user.role !== "admin")
+    return next(new errorHanlder("Only Admin allowed", 401));
+  next();
+});

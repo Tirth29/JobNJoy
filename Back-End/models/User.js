@@ -33,6 +33,11 @@ const schema = new mongoose.Schema({
             type:Date,
             // require:true
         },
+        role:{
+            type: String,
+            enum:["admin", "user"],
+            default:"user",
+        },
         biodata: {
             line1: String,
             line2: String,

@@ -5,6 +5,7 @@ import PostHeader from "../Components/PostHeader";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { otherPost } from "../reducer/Actions/UserAction";
+import FinalFooter from "../Components/FinalFooter";
 
 // const Posts = [
 //   {
@@ -99,7 +100,7 @@ function Post() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShouldRender(true);
-    }, 4000);
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
   // console.log(otherposts)
@@ -122,7 +123,7 @@ function Post() {
       const shuffled = shuffleArray(Posts.slice(0, Posts.length - 1));
       setShuffledPosts(shuffled);
       console.log(shuffledPosts); // You can do whatever you want with the shuffled array here
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(shuffleTimer);
   }, [Posts]);
   
@@ -135,6 +136,7 @@ function Post() {
         ))}
         <div className="w-20 h-20 text-5xl"> Helllloooooo</div>
       </motion.div>
+      <FinalFooter/>
     </div>
   ):null;
 }

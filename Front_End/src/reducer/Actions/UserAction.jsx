@@ -11,13 +11,6 @@ export const login = (username,email, password) => async (dispatch) => {
       `${server}/api/user/login`,
       { username, email, password },
       {
-        // credentials: "include",
-        // headers: {
-        //   // "Content-Type": "application/json",
-        // },
-        // headers:{
-        //   "Content-Type": "application/json"
-        // },
         withCredentials: true,
       }
     );
@@ -26,7 +19,7 @@ export const login = (username,email, password) => async (dispatch) => {
         payload: data.message,
       });
       console.log(data.token);
-      document.cookie = `token=${data.token}`;
+      document.cookie = `token=${data.token} expires=${new Date(Date.now() + 1000 * 60 * 60 * 24*5).toUTCString()} path=/`;
       console.log(document.cookie)
       // console.log(data.user.name)
   } catch (error) {
@@ -110,11 +103,14 @@ export const logout = () => async (dispatch) => {
     const { data } = await axios.get(`${server}/user/logout`, {
       withCredentials: true,
     });
-
+    const pastDate = new Date(Date.now() - 1);
+    const pastDateString = pastDate.toUTCString();
+    document.cookie = `token=; expires=${pastDateString}; path=/`;
     dispatch({
       type: "logoutSuccess",
       payload: data.message,
     });
+    document.cookie = undefined;
     console.log(data.message);
     
   } catch (error) {

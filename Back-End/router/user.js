@@ -1,8 +1,7 @@
-import express from 'express';
 import {OtherUserProfile, getMyProfile, logOut, login, signup, updatePassword, updateProfile, updateProfilePic } from '../controllers/user.js';
+import express from 'express';
 import { singleUpload } from '../middleware/multer.js';
 import { isAuthenticated } from '../middleware/auth.js';
-
 
 const router = express.Router()
 

@@ -92,12 +92,7 @@ export const countLikes = async(req,res)=>{
         if(!temp_post){
             return res.status(200).json('This post is not Exist')
         }
-
-       
         const count = temp_post.likes.length
-
-     
-
         return res.status(200).json(count)
     }catch(err){
             return res.status(500).json(err)

@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MyPostImage from "../Components/MyPostImage";
 import { useDispatch, useSelector } from "react-redux";
 import  {loadUser,logout, myAllPost}  from "../reducer/Actions/UserAction";
+import FinalFooter from "../Components/FinalFooter";
 
-function Profile(
-  // { route, isFocused }
-  ) {
+function Profile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // const [avatar, setAvatar] = useState(defaultImg);
@@ -19,54 +18,35 @@ function Profile(
   useEffect(() => {
     const timer = setTimeout(() => {
       dispatch(myAllPost());
-    },5000);
+      dispatch(loadUser());
+    },1000);
   
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      dispatch(loadUser());
-    },5000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //   },3000);
   
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
   
   const handleLogOut = async () => {
     dispatch(logout())
     console.log("log out");
     navigate("/login")
   }
-  // useEffect(() => {
-  //   if (route.params?.image) {
-  //     setAvatar(route.params.image);
-  //   //   const myform = new FormData();
-  //   myform.append("file", {
-    //     uri: route.params.image,
-    //     type: mime.getType(route.params.image),
-    //     name: route.params.image.split("/").pop(),
-    //   });
-    //   dispatch(updatePic(myform));
-    // }
-  //   dispatch(loadUser());
-  // }, [route.params, dispatch, isFocused]);
-
-  // useEffect(() => {
-  //   if (user?.avatar) {
-  //     setAvatar(user.avatar.url);
-  //   }
-  // }, [user]);
-  // console.log(isAuthenticated)
   return (
     <>
     { isAuthenticated && (
+      <>
       <div className="flex flex-col lg:flex-row">
       {/* Left Side */}
       <div className="sticky top-0 bg-[#8b41d0] w-full lg:w-[700px] py-4 pl-20 pr-4">
         <img
           src={user?.photo?.url}
           alt="..."
-          className="shadow-xl rounded-full w-48 h-48 lg:w-80 lg:h-80 lg:m-10 align-middle border-none"
+          className="shadow-xl rounded-full ml-4 w-36 h-36 lg:w-80 lg:h-80 lg:m-10 align-middle border-none"
         />
         <div className="flex lg:ml-20 flex-row mt-4 lg:mt-0 lg:visible">
         <div className="flex flex-col justify-start space-x-4 mb-2 lg:justify-start m-2">
@@ -108,7 +88,7 @@ function Profile(
       </div>
       
       {/* Right Side */}
-      <div className="flex-1 bg-[#8b41d0] overflow-y-auto">
+      <div className="flex-1 bg-[#8b41d0] overflow-y-auto lg:hidden">
         <p className="text-center justify-center bg-[#a157e7] py-1 text-white font-semibold text-lg w-full">
           All Posts
         </p>
@@ -122,6 +102,8 @@ function Profile(
       <button className="bg-red-500 w-full h-10 mb-20" onClick={handleLogOut} >Log Out</button>
       </div>
     </div>
+    <FinalFooter/>
+    </>
     )
   }
     {/* { !isAuthenticated && navigate("/login")} */}

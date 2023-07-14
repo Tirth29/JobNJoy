@@ -33,7 +33,7 @@ function PostCard({post,navigation }) {
   // const loading = useMessageAndErrorUser(navigation,dispatch,"visitprofile");
   const GoToProfile = async() => {
     console.log(post.username);
-      await dispatch(otheruserProfile(post.username))
+    await dispatch(otheruserProfile(post.username));
     navigate("/visitprofile")
   };
   return (

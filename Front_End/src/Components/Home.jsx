@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import FinalFooter from "./FinalFooter";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -44,8 +45,9 @@ const Home = () => {
   };
 
   return (
+    <>
     <div className="carousel" style={{ height: "40vh" }}>
-      <button
+      {/* <button
         className={`ml-[77rem] absolute z-10 bg-white rounded-2xl px-3`}
         onClick={() => {
           navigate("/login");
@@ -60,7 +62,7 @@ const Home = () => {
         }}
       >
         Sign Up
-      </button>
+      </button> */}
       <div className="carousel-inner">
         <div
           className={`carousel-item ${
@@ -129,6 +131,8 @@ const Home = () => {
         </div>
       </div>
     </div>
+    <FinalFooter/>
+    </>
   );
 };
 

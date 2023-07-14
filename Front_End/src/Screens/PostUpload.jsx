@@ -5,6 +5,7 @@ import "react-image-crop/dist/ReactCrop.css";
 import { useDispatch } from "react-redux";
 import { uploadPost } from "../reducer/Actions/UserAction";
 import { useMessageAndErrorUser } from "../Utils/Hooks";
+import FinalFooter from "../Components/FinalFooter";
 
 const PostUpload = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -73,7 +74,7 @@ const PostUpload = ({ navigation }) => {
     formData.append("caption", caption);
     formData.append("location", location);
     formData.append("file", photo);
-    console.log(photo)
+    console.log(photo);
     dispatch(uploadPost(formData));
     // Reset the state
     // setPhoto(null);
@@ -81,23 +82,24 @@ const PostUpload = ({ navigation }) => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-10">
-      <form>
-        {/* <div className="w-64 h-64 bg-gray-200 flex items-center justify-center rounded-md border-2 border-gray-400"> */}
-        <input
-          type="file"
-          required
-          onChange={handleProfilePicChange}
-          className="mt-72 ml-20"
-        />
-        {/* <button
+    <>
+      <div className="flex flex-col items-center mt-10">
+        <form>
+          {/* <div className="w-64 h-64 bg-gray-200 flex items-center justify-center rounded-md border-2 border-gray-400"> */}
+          <input
+            type="file"
+            required
+            onChange={handleProfilePicChange}
+            className="mt-72 ml-20"
+          />
+          {/* <button
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded"
           >
             Upload
           </button> */}
-        {/* </div> */}
-        {/* {photo && (
+          {/* </div> */}
+          {/* {photo && (
         <ReactCrop
           src={photo}
           crop={crop}
@@ -107,32 +109,34 @@ const PostUpload = ({ navigation }) => {
         />
       )} */}
 
-        <input
-          type="text"
-          placeholder="Add a location..."
-          name="location"
-          value={location}
-          onChange={handleLocationChange}
-          className="mt-5 w-64 p-2 border border-gray-400 rounded-md"
-        />
+          <input
+            type="text"
+            placeholder="Add a location..."
+            name="location"
+            value={location}
+            onChange={handleLocationChange}
+            className="mt-5 w-64 p-2 border border-gray-400 rounded-md"
+          />
 
-        <input
-          type="text"
-          placeholder="Add a caption..."
-          name="caption"
-          value={caption}
-          onChange={handlecaptionChange}
-          className="mt-5 w-64 p-2 border border-gray-400 rounded-md"
-        />
+          <input
+            type="text"
+            placeholder="Add a caption..."
+            name="caption"
+            value={caption}
+            onChange={handlecaptionChange}
+            className="mt-5 w-64 p-2 border border-gray-400 rounded-md"
+          />
 
-        <input
-          type="submit"
-          className="w-36 mt-10 h-12 rounded-full bg-gradient-to-l from-fuchsia-300 to-purple-600 hover:from-fuchsia-200 hover:to-purple-400 text-white font-bold"
-          value="Submit"
-          onClick={handleUpload}
-        />
-      </form>
-    </div>
+          <input
+            type="submit"
+            className="w-36 mt-10 h-12 rounded-full bg-gradient-to-l from-fuchsia-300 to-purple-600 hover:from-fuchsia-200 hover:to-purple-400 text-white font-bold"
+            value="Submit"
+            onClick={handleUpload}
+          />
+        </form>
+      </div>
+      <FinalFooter />
+    </>
   );
 };
 

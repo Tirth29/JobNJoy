@@ -457,7 +457,7 @@ const Register = () => {
                 />
               </div>
 
-              <div className="bg-white mt-4 border-fuchsia-800 border-2 rounded-xl">
+              {/* <div className="bg-white mt-4 border-fuchsia-800 border-2 rounded-xl">
                 <div className="card rounded-xl">
                   <div className="card-header">BioData</div>
                   <ul className="list-group list-group-flush">
@@ -477,7 +477,7 @@ const Register = () => {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </div> */}
               <div className="flex justify-center mt-8">
                 <input
                   type="submit"
