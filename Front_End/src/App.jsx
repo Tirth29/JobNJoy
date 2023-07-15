@@ -5,6 +5,7 @@ import SearchBar from "./Components/SearchBar";
 import HomePage from "./Components/HomePage";
 import Admin from "./Components/Admin";
 import AddCompany from "./Components/AddCompany";
+import EditCompany from "./Components/EditCompany";
 
 function App( ) {
 
@@ -21,6 +22,7 @@ function App( ) {
           <Route path="/profile" element={<Sample />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/addcompany" element={<AddCompany />} />
+          <Route path="/admin/editcompany" element={<EditCompany />} />
         </Routes>
       <Footer />
       </div>

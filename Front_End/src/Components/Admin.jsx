@@ -12,8 +12,14 @@ export default function Admin() {
                 <hr className="bg-black "/>
             </div>    
             <div className="m-2">
-                <button onClick={()=>navigate("/Admin/AddCompany") } className="bg-blue-500 text-gray-50 w-16 rounded text-center p-1 my-2">Add</button> <br />
-                <button className="bg-blue-500 text-gray-50 w-16 rounded text-center p-1 my-2">Update</button><br />
+                <button 
+                    onClick={()=>navigate("/admin/addcompany") } 
+                    className="bg-blue-500 text-gray-50 w-28 rounded text-center p-1 my-2">Add</button>
+                 <br />
+                <button 
+                    className="bg-blue-500 text-gray-50 w-28 rounded text-center p-1 my-2"
+                    onClick={()=>navigate("/admin/editcompany")}
+                    >Update</button><br />
                 
             </div>
         </>
