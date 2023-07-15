@@ -2,9 +2,10 @@ import React from 'react'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import {addcompany} from "../reducer/Actions/UserAction";
 
 const  AddCompany = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [company_mail, setCompany_mail] = useState("");
@@ -75,8 +76,8 @@ const  AddCompany = () => {
         formData.append("file",photo);
 
         console.log(formData);
-        // dispatch(addcompany(formData));
-        console.log("Company Added")
+        dispatch(addcompany(formData));
+        console.log("New Company Added")
 
         navigate("/Admin");
     }

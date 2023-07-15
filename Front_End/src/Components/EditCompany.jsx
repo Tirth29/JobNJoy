@@ -1,34 +1,31 @@
 import React,{useEffect ,useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { useDispatch ,useSelector } from 'react-redux';
+import { useDispatch ,useSelector } from 'react-redux';
+import { loadCompany,updateCompany,updateCompanyPhoto } from "../reducer/Actions/UserAction";
 
 
 const  EditCompany = () => {
-// const {user} = useSelector((state)=>state.company);
-let company={
-
-};
-const {user} = (company); 
-const [name,setName] = useState(user?.name);
-const [company_mail,setCompany_mail] = useState(user?.company_mail);
-const [domain,setDomain] = useState(user?.domain);
-const [hiring,setHiring] = useState(user?.hiring);
-const [hiring_domain,setHiring_domain] = useState(user?.hiring_domain);
-const [salary,setSalary] = useState(user?.salary);
-const [stipend,setStipend] = useState(user?.stipend);
-const [total_employee,setTotal_employee] = useState(user?.total_employee);
-const [total_vacancy,setTotal_vacancy] = useState(user?.total_vacancy);
-const [company_address,setCompany_address] = useState(user?.company_address);
-const [description,setDescription] = useState(user?.description);
-const [photo,setPhoto] = useState(user?.photo);
+const {company} = useSelector((state)=>state.company);
+const [name,setName] = useState(company?.name);
+const [company_mail,setCompany_mail] = useState(company?.company_mail);
+const [domain,setDomain] = useState(company?.domain);
+const [hiring,setHiring] = useState(company?.hiring);
+const [hiring_domain,setHiring_domain] = useState(company?.hiring_domain);
+const [salary,setSalary] = useState(company?.salary);
+const [stipend,setStipend] = useState(company?.stipend);
+const [total_employee,setTotal_employee] = useState(company?.total_employee);
+const [total_vacancy,setTotal_vacancy] = useState(company?.total_vacancy);
+const [company_address,setCompany_address] = useState(company?.company_address);
+const [description,setDescription] = useState(company?.description);
+const [photo,setPhoto] = useState(company?.photo);
 const [successAlert, setSuccessAlert] = useState(false);
 
-// const dispatch = useDispatch();
+const dispatch = useDispatch();
 const navigate = useNavigate();
 
 useEffect (()=>{
     const timer = setTimeout (()=>{
-        dispatch(loadUser());
+        dispatch(loadCompany());
     },5000);
     return ()=> clearTimeout(timer);
 });
@@ -76,12 +73,12 @@ const handlePhotoSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file",photo)
-    // dispatch(updateProfilePic(formData));
+    dispatch(updateCompanyPhoto(formData));
   };
 
 const handleSubmit = (e)=>{
     e.preventDefault();
-    // dispatch(update(company_mail,domain,hiring,hiring_domain,stipend,salary,total_employee,total_vacancy,company_address,description));
+    dispatch(updateCompany(company_mail,domain,hiring,hiring_domain,stipend,salary,total_employee,total_vacancy,company_address,description));
     
     setSuccessAlert(true);
     setTimeout(() => {
@@ -105,7 +102,7 @@ const handleSubmit = (e)=>{
                                 Image
                             </label>
                             <img
-                                src={user?.photo.url}
+                                src={company?.photo.url}
                                 alt="current image"
                                 className="h-40 w-40 rounded-full items-center text-center bg-black" 
                             />
@@ -132,7 +129,7 @@ const handleSubmit = (e)=>{
                             </label>
                             <input  className="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                     type="email" 
-                                    placeholder={user?.company_mail}
+                                    placeholder={company?.company_mail}
                                     name="company_email"
                                     onChange={handleEmailChange}
                             />
@@ -147,7 +144,7 @@ const handleSubmit = (e)=>{
                             <input 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"                          
                                 type="text" 
-                                placeholder={user?.domain}
+                                placeholder={company?.domain}
                                 onChange={handleDomainChange}
                                 />
                         </div>
@@ -159,7 +156,7 @@ const handleSubmit = (e)=>{
                             </label>
                             <select 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
-                                placeholder={user?.hiring}
+                                placeholder={company?.hiring}
                                 onChange={handleHiringChange}
                                 >
                                 <option value="yes">Yes</option>
@@ -175,7 +172,7 @@ const handleSubmit = (e)=>{
                             <input 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                 type="text"
-                                placeholder={user?.hiring_domain}
+                                placeholder={company?.hiring_domain}
                                 onChange={handleHiringDomainChange}
                                 />
                         </div>
@@ -189,7 +186,7 @@ const handleSubmit = (e)=>{
                             <input 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                 type="number" 
-                                placeholder={user?.stipend}
+                                placeholder={company?.stipend}
                                 onChange={handleStipendChange}
                                 />
                         </div>
@@ -202,7 +199,7 @@ const handleSubmit = (e)=>{
                             <input 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                 type="number" 
-                                placeholder={user?.salary}
+                                placeholder={company?.salary}
                                 onChange={handleSalaryChange}
                                  />
                         </div>
@@ -215,7 +212,7 @@ const handleSubmit = (e)=>{
                             <input 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                 type="number" 
-                                placeholder={user?.total_employee} 
+                                placeholder={company?.total_employee} 
                                 onChange={handleTemployeeChange}
                                 />
                         </div>
@@ -228,7 +225,7 @@ const handleSubmit = (e)=>{
                             <input 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                 type="number" 
-                                placeholder={user?.total_vacancy}
+                                placeholder={company?.total_vacancy}
                                 onChange={handleVacancyChange} 
                                 />
                         </div>
@@ -241,7 +238,7 @@ const handleSubmit = (e)=>{
                             <input 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                 type="text" 
-                                placeholder={user?.company_address}
+                                placeholder={company?.company_address}
                                 onChange={handleAddressChange}
                                 />
                         </div>
@@ -254,7 +251,7 @@ const handleSubmit = (e)=>{
                             <input 
                                 className="block w-full px-4 h-10 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                 type="textarea" 
-                                placeholder={user?.description} 
+                                placeholder={company?.description} 
                                 onChange={handleDescChange}/>
                         </div>
                     </div>

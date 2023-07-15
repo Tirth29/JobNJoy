@@ -61,6 +61,60 @@ export const signup = (formData) => async (dispatch) => {
   }
 };
 
+export const addcompany = (formData) => async (dispatch) =>{
+  try {
+    dispatch({
+      type:"addCompanyRequest",
+    });
+    const {data} = await axios.post(`${server}/api/company/newcompany`,formData,{
+      withCredentials: true, 
+
+    });
+
+    dispatch({
+      type:"addCompanySuccess",
+      payload: data.message,
+    });
+    console.log(data.message);
+
+  } catch (error) {
+    dispatch({
+      type:"addCompanyFail"
+    });
+    console.log(error);
+    console.log(error.response);
+  }
+}
+
+export const loadCompany = () => async (dispatch) => {
+  try {
+    dispatch({
+      type:"loadCompanyRequest",
+    });
+    const { data } = await axios.get(`${server}/api/company/getcompany`,{
+      withCredentials: true, 
+    });
+    dispatch({
+      type:"loadCompanySuccess",
+      payload: data.company,
+    });
+    console.log(data.company);
+  } catch (error) {
+    dispatch({
+      type: "loadCompanyFail",
+      payload: error.response.data.message,
+    });
+    console.log(error);
+  }
+};
+
+export const updateCompany = () => {
+
+}
+export const updateCompanyPhoto = () => {
+  
+}
+
 export const loadUser = () => async (dispatch) => {
   try {
     // console.log("loadUser1");

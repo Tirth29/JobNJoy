@@ -402,7 +402,7 @@ const Register = () => {
         <div className="mt-8">
           <form action="get">
             <div className="flex items-center justify-center">
-              <div className="relative rounded-full h-32 w-32 bg-gradient-to-r from-violet-700 via-purple-400 to-fuchsia-500 p-1 hover:bg-gradient-to-b from-violet-700 via-purple-400 to-fuchsia-500 hover:delay-1000">
+              <div className="relative rounded-full h-32 w-32 bg-gradient-to-r from-violet-700 via-purple-400  hover:delay-1000">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {photo ? (
                     <img

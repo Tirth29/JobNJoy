@@ -145,6 +145,42 @@ export const userReducer = createReducer({}, (builder) => {
       state.loading=false;
       state.error = action.payload;
     })
+  builder
+  .addCase("addCompanyRequest", (state, action) => {
+    state.loading=true; 
+  })
+  .addCase("addCompanySuccess", (state, action) => {
+    state.loading=false;
+    state.message=action.payload;
+  })
+  .addCase("addCompanyFail", (state, action) => {
+    state.loading=false;
+    state.error = action.payload; 
+  }) 
+  .addCase("editCompanyRequest", (state, action) => {
+    state.loading=true; 
+  })
+  .addCase("editCompanySuccess", (state, action) => {
+    state.loading=false;
+    state.message=action.payload;
+  })
+  .addCase("editCompanyFail", (state, action) => {
+    state.loading=false;
+    state.error = action.payload; 
+  })
+  .addCase("loadCompanyRequest", (state, action) => {
+    state.loading=true; 
+  })
+  .addCase("loadCompanySuccess", (state, action) => {
+    state.loading = false;
+    state.isAuthenticated = true;
+    state.company = action.payload;
+  })
+  .addCase("loadCompanyFail", (state, action) => {
+    state.loading = false;
+    state.isAuthenticated = false;
+    state.error = action.payload;
+  })
   builder.addCase("clearError", (state) => {
     state.error = null;
   });

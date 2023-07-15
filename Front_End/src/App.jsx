@@ -17,14 +17,10 @@ import Register from './Components/Register';
 import Forget from './Components/Forget';
 import Home from './Components/Home';
 import { useEffect, useState } from 'react';
-import { Route, Routes } from "react-router-dom";
-import Sample from "./Components/Sample";
-import Footer from "./Components/Footer";
-import SearchBar from "./Components/SearchBar";
-import HomePage from "./Components/HomePage";
-import Admin from "./Components/Admin";
-import AddCompany from "./Components/AddCompany";
-import EditCompany from "./Components/EditCompany";
+import Admin from './Components/Admin';
+import AddCompany from './Components/AddCompany';
+import EditCompany from './Components/EditCompany';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -72,19 +68,19 @@ function App() {
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/visitprofile" element={<VisitProfile />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/addcompany" element={<AddCompany />} />
+            <Route path="/admin/editcompany" element={<EditCompany />} />
             <Route path="/opportunity/CompanyPage" element={<Company />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/addcompany" element={<AddCompany />} />
-          <Route path="/admin/editcompany" element={<EditCompany />} />
           </>
 
       </Routes>
 
 
 
+  
     </>
   );
 }
 
 export default App;
-
