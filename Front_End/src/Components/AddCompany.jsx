@@ -73,13 +73,14 @@ const  AddCompany = () => {
         formData.append("total_vacancy",total_vacancy);
         formData.append("company_address",company_address);
         formData.append("description",description);
+        console.log(photo);
         formData.append("file",photo);
 
         console.log(formData);
         dispatch(addcompany(formData));
-        console.log("New Company Added")
+        // console.log("New Company Added")
 
-        navigate("/Admin");
+        // navigate("/Admin");
     }
 
 
@@ -98,7 +99,7 @@ const  AddCompany = () => {
                             </label>
                             <input  className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white" 
                                     id="grid-company-name" 
-                                    type="text" 
+                                    type="string" 
                                     name="name"
                                     placeholder="Company Name"
                                     value={name}
@@ -112,7 +113,7 @@ const  AddCompany = () => {
                             </label>
                             <input  className="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                     id="grid-company-email" 
-                                    type="email" 
+                                    type="string" 
                                     placeholder="company@example.com"
                                     name="company_email"
                                     value={company_mail}
@@ -127,11 +128,11 @@ const  AddCompany = () => {
                                 Image
                             </label>
                             <input className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-image"
+                                // id="grid-image"
                                 type="file"
                                 // value={photo}
                                 onChange={handleProfilePictureChange} 
-                                required />
+                                />
                         </div>
                     </div>
                     <div className="flex flex-wrap p-2 max-mx-3">
@@ -142,7 +143,7 @@ const  AddCompany = () => {
                             <input 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                 id="grid-domain" 
-                                type="text" 
+                                type="string" 
                                 placeholder="Domain"
                                 name="domain"
                                 value={domain}
@@ -176,7 +177,7 @@ const  AddCompany = () => {
                             <input 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                 id="grid-domain" 
-                                type="text" 
+                                type="string" 
                                 placeholder="Domain"
                                 name="hiring_domain"
                                 value={hiring_domain}
@@ -193,7 +194,7 @@ const  AddCompany = () => {
                             <input 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                 id="grid-hiring" 
-                                type="number" 
+                                type="string" 
                                 placeholder="stipend"
                                 name="stipend"
                                 value={stipend} 
@@ -209,7 +210,7 @@ const  AddCompany = () => {
                             <input 
                                 className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
                                 id="grid-hiring" 
-                                type="number" 
+                                type="string" 
                                 placeholder="salary"
                                 name="salary"
                                 value={salary}

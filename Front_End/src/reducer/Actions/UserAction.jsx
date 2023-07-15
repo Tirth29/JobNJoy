@@ -66,9 +66,9 @@ export const addcompany = (formData) => async (dispatch) =>{
     dispatch({
       type:"addCompanyRequest",
     });
+    console.log("A")
     const {data} = await axios.post(`${server}/api/company/newcompany`,formData,{
       withCredentials: true, 
-
     });
 
     dispatch({
@@ -79,7 +79,8 @@ export const addcompany = (formData) => async (dispatch) =>{
 
   } catch (error) {
     dispatch({
-      type:"addCompanyFail"
+      type:"addCompanyFail",
+      payload:"Add Company Failed"
     });
     console.log(error);
     console.log(error.response);
