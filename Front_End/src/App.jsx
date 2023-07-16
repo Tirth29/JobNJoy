@@ -27,6 +27,7 @@ function App() {
   useEffect(() => {
     // dispatch(otherPost());
     dispatch(myAllPost());
+    dispatch(otherPost());
   }, [dispatch]);
 
   return (

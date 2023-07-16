@@ -93,6 +93,7 @@ import { otherPost } from "../reducer/Actions/UserAction";
 function Post() {
   const dispatch = useDispatch();
   const {loading, otherposts } = useSelector((state) => state.user);
+  const [shuffledPosts, setShuffledPosts] = useState([]);
   const [shouldRender, setShouldRender] = useState(false);
 
   
@@ -100,49 +101,42 @@ function Post() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShouldRender(true);
-    }, 5000);
+    }, 4000);
     return () => clearTimeout(timer);
   }, []);
   // console.log(otherposts)
  
   // console.log(Posts);
   useEffect(() => {
-    setTimeout(() => {
-       dispatch(otherPost());
-    }, 1000);
+    // setTimeout(() => {
+      dispatch(otherPost());
+    // }, 1000);
   }, [dispatch]);
-  const Posts =  otherposts;
-
-  console.log('Post : ',Posts)
-  // const shuffleArray = (array) => {
-  //   for (let i = array.length - 1; i > 0; i--) {
-  //     const j = Math.floor(Math.random() * (i + 1));
-  //     console.log('array i : ',array[i])
-  //     [array[i], array[j]] = [array[j], array[i]];
-  //   }
-  //   return array;
-  // };
-  
-  
-
-  // var timeout = setTimeout(function() {
-  //  const shuffleArray2 = shuffleArray(Posts)
-  //  console.log('shuffleArray2 : ',shuffleArray2)
-  //   clearTimeout(timeout); // Clear the timeout after function execution
-  // }, 3000);
+  const Posts = otherposts;
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+  useEffect(() => {
+    const shuffleTimer = setTimeout(() => {
+      const shuffled = shuffleArray(Posts.slice(0, Posts.length - 1));
+      setShuffledPosts(shuffled);
+      console.log(shuffledPosts); // You can do whatever you want with the shuffled array here
+    }, 2000);
+    return () => clearTimeout(shuffleTimer);
+  }, [Posts]);
   
   return shouldRender ? (
     <div>
       <PostHeader />
       <motion.div className="pt-10">
-        {Posts.map((post,index) => (
-            
-         <PostCard key={post._id} post={post} />
-        
-        
+        {shuffledPosts.map((post) => (
+          <PostCard key={post._id} post={post} likes={post.likes}/>
         ))}
-        
-        <div className="w-20 h-20 text-5xl"> Helllloooooo</div>
+       
        
       </motion.div>
     </div>

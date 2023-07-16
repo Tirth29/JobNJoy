@@ -284,3 +284,156 @@ export const updateProfile =
       console.log(error)
     }
   };
+
+  export const otheruserProfile = (otheruser) => async (dispatch) => {
+    try {
+      dispatch({
+        type: "otherUserProfileRequest",
+      });
+      const { data } = await axios.get(`${server}/api/user/otheruserprofile?otheruser=${otheruser}`, {
+        withCredentials: true,
+      });
+      
+      dispatch({
+        type: "otherUserProfileSuccess",
+        payload: data.user,
+      });
+      // console.log(data);
+    } catch (error) {
+      dispatch({
+        type: "otherUserProfileFail",
+        payload: "Can't Load Profile"
+      });
+      console.log(error)
+    }
+  };
+
+  export const otherUserPost = (otheruser) => async (dispatch) => {
+    try {
+      dispatch({
+        type: "otherUserPostRequest",
+      });
+      const { data } = await axios.get(`${server}/api/post/otheruserpost?user=${otheruser}`, {
+        withCredentials: true,
+      });
+      
+      dispatch({
+        type: "otherUserPostSuccess",
+        payload: data.posts,
+      });
+      // console.log(data.posts);
+    } catch (error) {
+      dispatch({
+        type: "otherUserPostFail",
+        payload: "Can't Load Post"
+      });
+      console.log(error)
+    }
+  };
+
+    
+
+  export const addlikes = (_id) => async (dispatch) => {
+    try {
+     
+      dispatch({
+        type: "otheruserlikespost",
+      });
+      
+      const { data } = await axios.post(`${server}/api/post/liked`,{_id},{
+        withCredentials: true,
+      });
+    console.log('data : ',data)
+      dispatch({
+        type: "otherUselikespostSuccess",
+        payload: data,
+      });
+      
+      // console.log(data.posts);
+    } catch (error) {
+      dispatch({
+        type: "otherUserlikespostFail",
+        payload: "no able to get like"
+      });
+      console.log('error : ',error)
+    }
+  };
+
+  export const dislikes = (_id) => async (dispatch) => {
+    try {
+     
+      dispatch({
+        type: "otheruserdislikespost",
+      });
+      
+      const { data } = await axios.post(`${server}/api/post/disliked`,{_id},{
+        withCredentials: true,
+      });
+    console.log('data : ',data)
+      dispatch({
+        type: "otherUsedislikespostSuccess",
+        payload: data,
+      });
+      
+      // console.log(data.posts);
+    } catch (error) {
+      dispatch({
+        type: "otherUserdislikespostFail",
+        payload: "no able to get like"
+      });
+      console.log('error : ',error)
+    }
+  };
+
+  export const addfollower = (_id) => async (dispatch) => {
+    try {
+     
+      dispatch({
+        type: "otherUserfollowit",
+      });
+      
+      const { data } = await axios.post(`${server}/api/manage/add/follower`,{_id},{
+        withCredentials: true,
+      });
+   
+      dispatch({
+        type: "otherUserfollowitSuccess",
+        payload: data,
+      });
+      
+      console.log(data);
+    } catch (error) {
+      dispatch({
+        type: "otherUserfollowitFail",
+        payload: "no able to get like"
+      });
+      console.log('error : ',error)
+    }
+  };
+
+  export const deletefollower = (_id) => async (dispatch) => {
+    try {
+     
+      dispatch({
+        type: "otherUserunfollowit",
+      });
+      
+     
+      const { data } = await axios.post(`${server}/api/manage/add/unfollower`,{_id},{
+        withCredentials: true,
+      });
+      console.log('here')
+      dispatch({
+        type: "otherUserunfollowitSuccess",
+        payload: data,
+      });
+      
+      console.log(data);
+    } catch (error) {
+      dispatch({
+        type: "otherUserunfollowitFail",
+        payload: "no able to get like"
+      });
+      console.log('error : ',error)
+    }
+  };

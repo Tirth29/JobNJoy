@@ -11,9 +11,9 @@ router.post("/postupload",isAuthenticated,singleUpload,PostUpload);
 router.get("/userselfpost",isAuthenticated,getAllSelfPost);
 router.get("/otheruserpost",isAuthenticated,getOtherUserPost);
 router.get("/allotherpost",isAuthenticated,allOtherPost);
-router.post("/liked",addlike)
-router.post("/disliked",removelike)
-router.post("/getlikes",checklikes)
+router.post("/liked",isAuthenticated,addlike)
+router.post("/disliked",isAuthenticated,removelike)
+router.post("/getlikes",isAuthenticated,checklikes)
 router.post('/countlikes',countLikes)
 
 export default router

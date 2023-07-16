@@ -123,10 +123,82 @@ export const userReducer = createReducer({}, (builder) => {
       state.loading=false;
       state.error = action.payload;
     })
+    .addCase("otherUserProfileRequest", (state, action) => {
+      state.loading=true; 
+    })
+    .addCase("otherUserProfileSuccess", (state, action) => {
+      state.loading=false;
+      state.profile=action.payload;
+    })
+    .addCase("otherUserProfileFail", (state, action) => {
+      state.loading=false;
+      state.error = action.payload;
+    })
+    .addCase("otherUserPostRequest", (state, action) => {
+      state.loading=true; 
+    })
+    .addCase("otherUserPostSuccess", (state, action) => {
+      state.loading=false;
+      state.otheruserpost=action.payload;
+    })
+    .addCase("otherUserPostFail", (state, action) => {
+      state.loading=false;
+      state.error = action.payload;
+    })
+    .addCase('otheruserlikes',(state) =>{
+      state.loading=true;
+    }).
+    addCase('otherUselikesSuccess',(state,action)=>{
+      
+        state.loading=false;
+        state.checks=action.payload;
+    
+    }).addCase('otherUselikesFail',(state,action)=>{
+      state.loading=false;
+      state.checks=action.payload;
+     
+    }).
+    addCase('otheruserlikespost',(state)=>{
+      state.loading = true;
+    }).
+    addCase('otherUselikespostSuccess',(state,action)=>{
+      state.loading=false;
+      state.like=action.payload;
+
+    }).
+    addCase('otherUselikespostFail',(state,action)=>{
+      state.loading=false;
+      state.like=action.payload;
+    }).
+    addCase('otheruserdislikespost',(state)=>{
+      state.loading = true;
+    }).
+    addCase('otherUsedislikespostSuccess',(state,action)=>{
+      state.loading=false;
+      state.like=action.payload;
+
+    }).
+    addCase('otherUserdislikespostFail',(state,action)=>{
+      state.loading=false;
+      state.like=action.payload;
+    }).addCase('otherUserfollowit',(state,action)=>{
+      state.loading= true;
+    }).addCase('otherUserfollowitSuccess',(state,action)=>{
+      state.loading=false;
+    }).addCase('otherUserfollowitFail',(state,action)=>{
+      state.loading=false;
+    }).addCase('otherUserunfollowit',(state,action)=>{
+      state.loading= true;
+    }).addCase('otherUserunfollowitSuccess',(state,action)=>{
+      state.loading=false;
+    }).addCase('otherUserunfollowitFail',(state,action)=>{
+      state.loading=false;
+    })
   builder.addCase("clearError", (state) => {
     state.error = null;
   });
   builder.addCase("clearMessage", (state) => {
     state.message = null;
   });
+  
 });
