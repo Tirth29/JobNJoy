@@ -20,7 +20,7 @@ export const newCompany = asyncError(async (req, res, next) => {
     const company = await Company.create({ name,company_mail, domain,hiring, stipend, salary, hiring_domain , total_employee , total_vacancy , company_address , description , photo});
     res.json({
         success: true,
-        message: "New Company details successfully",
+        message: "New Company added successfully",
         company,
     })
 });
