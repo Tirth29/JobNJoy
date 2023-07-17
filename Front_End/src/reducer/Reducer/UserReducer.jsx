@@ -157,14 +157,14 @@ export const userReducer = createReducer({}, (builder) => {
     state.loading=false;
     state.error = action.payload; 
   }) 
-  .addCase("editCompanyRequest", (state, action) => {
+  .addCase("updateCompanyRequest", (state, action) => {
     state.loading=true; 
   })
-  .addCase("editCompanySuccess", (state, action) => {
+  .addCase("updateCompanySuccess", (state, action) => {
     state.loading=false;
     state.message=action.payload;
   })
-  .addCase("editCompanyFail", (state, action) => {
+  .addCase("updateCompanyFail", (state, action) => {
     state.loading=false;
     state.error = action.payload; 
   })

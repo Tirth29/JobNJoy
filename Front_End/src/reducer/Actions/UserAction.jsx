@@ -100,6 +100,10 @@ export const loadCompany = () => async (dispatch) => {
       payload: data.company,
     });
     console.log(data.company);
+    data.company.map((company)=>{
+      console.log(company);
+      console.log(company.company_mail)
+    })
   } catch (error) {
     dispatch({
       type: "loadCompanyFail",
@@ -109,11 +113,9 @@ export const loadCompany = () => async (dispatch) => {
   }
 };
 
-export const updateCompany = () => {
 
-}
-export const updateCompanyPhoto = () => {
-  
+export const updateCompanyPhoto = () => { 
+
 }
 
 export const loadUser = () => async (dispatch) => {
@@ -209,6 +211,33 @@ export const updateProfile =
     }
   };
 
+  export const updateCompany = 
+  (company_mail,domain,hiring,hiring_domain,stipend,salary,total_employee,total_vacancy,company_address,description) => async (dispatch)=> {
+    try {
+      console.log("update company detail started");
+      dispatch({
+        type: "updateCompanyRequest",
+      });
+      
+      const { data } = await axios.post(`${server}/api/user/updatecompany`,
+      {company_mail,domain,hiring,hiring_domain,stipend,salary,total_employee,total_vacancy,company_address,description},
+      {
+        
+        withCredentials: true,
+      }); 
+
+      dispatch({
+        type: "updateCompanySuccess",
+        payload: data.message,
+      });
+      console.log(data.message);
+    } catch (error) {
+      dispatch({
+        type: "updateCompanyFail",
+        payload: error.response.data.message,
+      });
+    }
+  }
 
   export const updateProfilePic = (formData) => async (dispatch) => {
     try {

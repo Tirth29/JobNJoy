@@ -1,9 +1,20 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import AddCompany from './AddCompany'
 import  {useNavigate} from "react-router-dom";
+import { useDispatch ,useSelector } from 'react-redux';
+import { loadCompany,updateCompany,updateCompanyPhoto } from "../reducer/Actions/UserAction";
 
 export default function Admin() {
     const navigate=useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect (()=>{
+        const timer = setTimeout (()=>{
+            dispatch(loadCompany());
+        },5000);
+        return ()=> clearTimeout(timer);
+    });
+
     return (
         <>
             <div className="p-1 text-4xl text-center bg-slate-200">ADMIN</div>
