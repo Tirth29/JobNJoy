@@ -40,7 +40,7 @@ export const CompanyUpdate = asyncError(async (req, res, next) => {
       };
     }
     const updatedCompany = await Company.findOneAndUpdate(
-        { _id: id },
+        { company_mail: company_mail},
         {
           $set: {
             name: name || undefined,
@@ -70,7 +70,7 @@ export const getCompany = asyncError(async (req, res, next) => {
     const company = await Company.find();
     res.json({
         success: true,
-        message: "Company details get successfully",
+        message: "Fetch Company details successfully",
         company,
     })
 });
