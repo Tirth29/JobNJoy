@@ -4,6 +4,7 @@ import ReelCard from "../Components/ReelCard";
 import { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
+import FinalFooter from "../Components/FinalFooter";
 
 const reels = [
   {
@@ -177,6 +178,7 @@ function Refreshment() {
           ))}
         </AnimatePresence>
       </motion.div>
+      <FinalFooter/>
     </div>
   );
 }

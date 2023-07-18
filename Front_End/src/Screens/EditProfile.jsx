@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser, updateProfile, updateProfilePic } from "../reducer/Actions/UserAction";
 import { useNavigate } from "react-router-dom";
+import FinalFooter from "../Components/FinalFooter";
 
 // import { myPosts } from "./Profile";
 
@@ -79,6 +80,7 @@ const EditProfile = () => {
   };
 
   return (
+    <>
     <div className="container mx-auto px-4 py-8 bg-[#8b41d0] ">
       <h1 className="text-3xl font-bold mb-4 text-white">Edit Profile</h1>
 
@@ -179,6 +181,8 @@ const EditProfile = () => {
         </div>
       )}
     </div>
+    <FinalFooter/>
+    </>
   );
 };
 
