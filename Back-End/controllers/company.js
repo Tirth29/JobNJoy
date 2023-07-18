@@ -5,7 +5,7 @@ import { Company } from "../models/company.js";
 import { getDataUri } from "../utils/features.js";
 
 export const newCompany = asyncError(async (req, res, next) => {
-    const {name,company_mail, domain,hiring, total_employee, stipend, salary ,hiring_domain, total_vacancy , company_address , description } = req.body;
+    const {name,company_mail,company_website, domain,hiring, total_employee, stipend, salary ,hiring_domain, total_vacancy , company_address , description } = req.body;
     let photo = undefined;
     if (req.file) {
       const file = getDataUri(req.file);
@@ -17,7 +17,7 @@ export const newCompany = asyncError(async (req, res, next) => {
         url: myCloud.secure_url,
       };
     }
-    const company = await Company.create({ name,company_mail, domain,hiring, stipend, salary, hiring_domain , total_employee , total_vacancy , company_address , description , photo});
+    const company = await Company.create({ name,company_mail,company_website, domain,hiring, stipend, salary, hiring_domain , total_employee , total_vacancy , company_address , description , photo});
     res.json({
         success: true,
         message: "New Company added successfully",
@@ -27,7 +27,7 @@ export const newCompany = asyncError(async (req, res, next) => {
 
 export const CompanyUpdate = asyncError(async (req, res, next) => {
 
-    const {id,name,company_mail, domain,hiring, total_employee, stipend, salary ,hiring_domain, total_vacancy , company_address , description } = req.body;
+    const {name,company_mail,company_website, domain,hiring, total_employee, stipend, salary ,hiring_domain, total_vacancy , company_address , description } = req.body;
     let photo = undefined;
     if (req.file) {
       const file = getDataUri(req.file);
@@ -45,6 +45,7 @@ export const CompanyUpdate = asyncError(async (req, res, next) => {
           $set: {
             name: name || undefined,
             company_mail: company_mail || undefined,
+            company_website: company_website || undefined,
             domain: domain || undefined,
             hiring: hiring || undefined,
             total_employee: total_employee || undefined,

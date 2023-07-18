@@ -84,7 +84,7 @@ export const getCategorywiseReel = asyncError(async (req, res, next) => {
   const reel = await Reels.find({
     category: category ? category : undefined, // Only include products with the specified category ID
   });
-
+  
   res.status(200).json({
     success: true,
     reel,

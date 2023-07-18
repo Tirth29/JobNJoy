@@ -10,6 +10,10 @@ const schema = new mongoose.Schema({
         required:[true,"Please enter email"],
         unique: [true,"Email already exists"],
     },
+    company_website:{
+        type:String,
+        required:[true,"Please enter company website"]
+    },
     photo:{
         public_id: String,
         url: String,
