@@ -246,7 +246,7 @@ export const updateProfile =
         type: "myAllPostSuccess",
         payload: data.posts,
       });
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       dispatch({
         type: "myAllPostFail",
@@ -270,7 +270,7 @@ export const updateProfile =
         type: "otherPostSuccess",
         payload: data.posts,
       });
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       dispatch({
         type: "otherPostFail",
@@ -294,7 +294,6 @@ export const updateProfile =
         type: "otherUserProfileSuccess",
         payload: data.user,
       });
-      // console.log(data);
     } catch (error) {
       dispatch({
         type: "otherUserProfileFail",
@@ -326,3 +325,56 @@ export const updateProfile =
       console.log(error)
     }
   };
+
+  export const allReel=() => async (dispatch)=>{
+
+    try {
+      dispatch({
+        type: "allReelsRequest",
+      });
+      const {data}=await axios.get(`${server}/api/reel/allreel`,{
+        withCredentials: true,
+      });
+
+      dispatch({
+        type:"allReelsSuccess",
+        payload: data.reels,
+      });
+      console.log(data.reels);
+    } catch (error) {
+      dispatch({
+        type:"allReelsFailure",
+        payload: "nothing in reels"
+      });
+      console.log(error);
+      console.log("nothing in reelssss");
+    }
+
+
+  }
+  export const categoryWiseReel=(FormData) => async (dispatch)=>{
+
+    try {
+      dispatch({
+        type: "categoryWiseRequest",
+      });
+      const {data}=await axios.get(`${server}/api/reel/categorywisereel`,FormData, {
+        withCredentials: true,
+      });
+
+      dispatch({
+        type:"categoryWiseSuccess",
+        payload: data.reels,
+      });
+      console.log(data.reels);
+    } catch (error) {
+      dispatch({
+        type:"categoryWiseFailure",
+        payload: "nothing in reels"
+      });
+      console.log(error);
+      console.log("nothing in reelssss");
+    }
+
+
+  }

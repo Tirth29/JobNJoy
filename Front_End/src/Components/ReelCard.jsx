@@ -265,7 +265,7 @@ const ReelCard = ({ reel }) => {
     <div className="w-full h-[800px] lg:w-96 lg:mx-[530px] overflow-scroll scroll-smooth bg-black">
       <div className="flex flex-row">
         <AnimatePresence>
-          <motion.div key={reel.id} className="card relative">
+          <motion.div key={reel._id} className="card relative">
             <div className="flex flex-column relative ">
               <button onClick={isPlaying ? pauseVideo : startVideo} className="">
                 <video
@@ -274,7 +274,7 @@ const ReelCard = ({ reel }) => {
                   // controls
                   // onClickCapture={isPlaying ? pauseVideo : startVideo}
                 >
-                  <source src={reel.video} type="video/mp4" />
+                  <source src={reel.reel.url} type="video/mp4" />
                 </video>
               </button>
               <div className="buttonGroup mt-52 flex flex-col absolute right-0 bg-white/50 rounded-2xl">
@@ -284,7 +284,7 @@ const ReelCard = ({ reel }) => {
                   ) : (
                     <AiOutlineHeart />
                   )}
-                  <p className="text-sm">{reel.likes}</p>
+                  <p className="text-sm">{reel.likes.length}</p>
                 </button>
                 <button className="text-4xl my-1">
                   <AiOutlineComment />

@@ -57,94 +57,117 @@ export const userReducer = createReducer({}, (builder) => {
       state.isAuthenticated = false;
       state.error = action.payload;
     })
-    .addCase("updateProfileRequest", (state,action) => {
+    .addCase("updateProfileRequest", (state, action) => {
       state.loading = true;
     })
     .addCase("updateProfileSuccess", (state, action) => {
-      state.loading=false;
-      state.message=action.payload;
+      state.loading = false;
+      state.message = action.payload;
     })
     .addCase("updateProfileFail", (state, action) => {
-      state.loading=false;
-      state.error=action.payload;
+      state.loading = false;
+      state.error = action.payload;
     })
     .addCase("updatePicRequest", (state, action) => {
-      state.loading=true; 
+      state.loading = true;
     })
     .addCase("updatePicSuccess", (state, action) => {
-      state.loading=false;
-      state.message=action.payload;
+      state.loading = false;
+      state.message = action.payload;
     })
     .addCase("updatePicFail", (state, action) => {
-      state.loading=false;
-      state.error = action.payload; 
+      state.loading = false;
+      state.error = action.payload;
     })
     .addCase("updatePostRequest", (state, action) => {
-      state.loading=true; 
+      state.loading = true;
     })
     .addCase("updatePostSuccess", (state, action) => {
-      state.loading=false;
-      state.message=action.payload;
+      state.loading = false;
+      state.message = action.payload;
     })
     .addCase("updatePostFail", (state, action) => {
-      state.loading=false;
-      state.error = action.payload; 
+      state.loading = false;
+      state.error = action.payload;
     })
     .addCase("updateReelRequest", (state, action) => {
-      state.loading=true; 
+      state.loading = true;
     })
     .addCase("updateReelSuccess", (state, action) => {
-      state.loading=false;
-      state.message=action.payload;
+      state.loading = false;
+      state.message = action.payload;
     })
     .addCase("updateReelFail", (state, action) => {
-      state.loading=false;
-      state.error = action.payload; 
+      state.loading = false;
+      state.error = action.payload;
     })
     .addCase("myAllPostRequest", (state, action) => {
-      state.loading=true; 
+      state.loading = true;
     })
     .addCase("myAllPostSuccess", (state, action) => {
-      state.loading=false;
-      state.posts=action.payload;
+      state.loading = false;
+      state.posts = action.payload;
     })
     .addCase("myAllPostFail", (state, action) => {
-      state.loading=false;
+      state.loading = false;
       state.error = action.payload;
     })
     .addCase("otherPostRequest", (state, action) => {
-      state.loading=true; 
+      state.loading = true;
     })
     .addCase("otherPostSuccess", (state, action) => {
-      state.loading=false;
-      state.otherposts=action.payload;
+      state.loading = false;
+      state.otherposts = action.payload;
     })
     .addCase("otherPostFail", (state, action) => {
-      state.loading=false;
+      state.loading = false;
       state.error = action.payload;
     })
     .addCase("otherUserProfileRequest", (state, action) => {
-      state.loading=true; 
+      state.loading = true;
     })
     .addCase("otherUserProfileSuccess", (state, action) => {
-      state.loading=false;
-      state.profile=action.payload;
+      state.loading = false;
+      state.profile = action.payload;
     })
     .addCase("otherUserProfileFail", (state, action) => {
-      state.loading=false;
+      state.loading = false;
       state.error = action.payload;
     })
     .addCase("otherUserPostRequest", (state, action) => {
-      state.loading=true; 
+      state.loading = true;
     })
     .addCase("otherUserPostSuccess", (state, action) => {
-      state.loading=false;
-      state.otheruserpost=action.payload;
+      state.loading = false;
+      state.otheruserpost = action.payload;
     })
     .addCase("otherUserPostFail", (state, action) => {
-      state.loading=false;
+      state.loading = false;
       state.error = action.payload;
     })
+    .addCase("allReelsRequest", (state, action) => {
+      state.loading = true;
+    })
+    .addCase("allReelsSuccess", (state, action) => {
+      state.loading = false;
+      state.allreels = action.payload;
+    })
+    .addCase("allReelsFailure", (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    })
+    .addCase("categoryWiseRequest", (state, action) => {
+      state.loading = false;
+      state.allreels = action.payload;
+    })
+    .addCase("categoryWiseSuccess", (state, action) => {
+      state.loading = false;
+      state.allreels = action.payload;
+    })
+    .addCase("categoryWiseFailure", (state, action) => {
+      state.loading = false;
+      state.allreels = action.payload;
+    });
   builder.addCase("clearError", (state) => {
     state.error = null;
   });
@@ -152,3 +175,15 @@ export const userReducer = createReducer({}, (builder) => {
     state.message = null;
   });
 });
+// builder
+//   .addCase("allReelsRequest", (state, action) => {
+//     state.loading = true;
+//   })
+//   .addCase("allReelsSuccess", (state, action) => {
+//     state.loading = false;
+//     state.allreels = action.payload;
+//   })
+//   .addCase("allReelsFailure", (state, action) => {
+//     state.loading = false;
+//     state.error = action.payload;
+//   });
