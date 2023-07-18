@@ -34,7 +34,7 @@ const MoreInfo = styled(Typography)`
     
 `
 
-const Bio = ({ ComapnySite }) => {
+const Bio = ({ ComapanySite,companyDesc,hiring,companyDomain,salary }) => {
 
     const navigate = useNavigate();
 
@@ -43,20 +43,28 @@ const Bio = ({ ComapnySite }) => {
 
         <Box>
              <Typography style={{margin:'3px 0px 2px 10px'}}>
-               Web Site : <a href={ComapnySite} style={{color:'blue',textDecoration:'underline',fontSize:'15px'}}>Youtube.com</a>
+               Web Site : <a href={ComapanySite} style={{color:'blue',textDecoration:'underline',fontSize:'15px'}}>{ComapanySite}</a>
             </Typography>
-            <Head >Fields For Opportunity :</Head>
+            <Head >Field For Opportunity :</Head>
             <Box style={{margin:'0px 70px 2px 20px',padding:'2px 2px 3px 3px'}}>    
-                <Typography style={{fontWeight:'550'}}>{ComapnySite}</Typography>
+                <Typography style={{fontWeight:'550'}}>{hiring}</Typography>
                     
+            </Box>
+            <Head >Domain :</Head>
+            <Box style={{margin:'0px 70px 2px 20px',padding:'2px 2px 3px 3px'}}>    
+                <Typography style={{fontWeight:'550'}}>{companyDomain}</Typography>     
+            </Box>
+            <Head >salary :</Head>
+            <Box style={{margin:'0px 70px 2px 20px',padding:'2px 2px 3px 3px'}}>    
+                <Typography style={{fontWeight:'550'}}>{salary}</Typography>     
             </Box>
             <More>
                 <Typography style={{fontFamily:'Verdana',}}>
-                    {ComapnySite}
+                    {companyDesc}
                 </Typography>
             </More>
            
-            <MoreInfo onClick={()=>navigate('/opportunity/CompanyPage')}>For more Info</MoreInfo>
+            <MoreInfo onClick={()=>navigate('/')}>For more Info</MoreInfo>
         </Box>
     )
 }

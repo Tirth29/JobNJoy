@@ -51,8 +51,11 @@ const Header = () => {
 
     const [openDialog, setopenDialog] = useState(false)
     const [name,setName] = useState(null);
-    const [hiring_domain, setHiring_domain] = useState(null);
+    const [domain, setDomain] = useState(null);
+    const [hiring, setHiring] = useState(null);
+    const [salary, setSalary] = useState(0);
     const [company_site,setCompany_site] = useState("abc.com")
+    const [description,setDescription] = useState("")
     const [ComapnyInfo, SetCompanyInfo] = useState({
         CompanyName: 'Project_industryoaoaoao',
         Fields: ['Web Design', 'App Design', 'AutoMation'],
@@ -61,9 +64,12 @@ const Header = () => {
     })
 
 
-    const handleClik = (name,hiring_domain) => {    
+    const handleClik = (name,hiring_domain,desc,domain,salary) => {    
         setName(name);
-        setHiring_domain(hiring_domain);
+        setDomain(domain);
+        setDescription(desc);
+        setHiring(hiring_domain);
+        setSalary(salary);
         setopenDialog(true);
     }
     return (
@@ -74,13 +80,16 @@ const Header = () => {
                     <DialogBox 
                         openDialog={openDialog}
                         setopenDialog={setopenDialog}
-                        companyDomain={hiring_domain}
+                        companyDomain={domain}
                         companyName={name}
                         companySite={company_site}
+                        companyDesc={description}
+                        hiring={hiring}
+                        salary={salary}
                          />
                 <div className=' my-10 rounded flex justify-around sm:mx-20' >
                         {company?.map((company)=>(
-                            <div className='rounded flex w-1/2 justify-center '  onClick={()=>handleClik(company.name,company.hiring_domain)}>
+                            <div className='rounded flex w-1/2 justify-center '  onClick={()=>handleClik(company.name,company.hiring_domain,company.description,company.domain,company.salary)}>
                                 <Wrapper className="sm:w-72 sm:h-100 w-40">
                                     <img src={sample_image} alt="image" className='  aspect-square w-full' />
                                     <div className="bg-gray-100  " >
