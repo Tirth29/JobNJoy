@@ -100,10 +100,6 @@ export const loadCompany = () => async (dispatch) => {
       payload: data.company,
     });
     console.log(data.company);
-    data.company.map((company)=>{
-      console.log(company);
-      console.log(company.company_mail)
-    })
   } catch (error) {
     dispatch({
       type: "loadCompanyFail",

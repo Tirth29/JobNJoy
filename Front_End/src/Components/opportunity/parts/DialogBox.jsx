@@ -6,14 +6,12 @@ import Likepanel from "./panel";
 import Bio from "./Bio";
 import Follow from "./follow";
 
-const DialogBox = ({ openDialog, setopenDialog, ComapnyInfo }) => {
+const DialogBox = ({ openDialog, setopenDialog, companyDomain,companyName }) => {
 
-
-
+    
     const HandleClose = () => {
         setopenDialog(false)
     };
-
 
 
     const Image = styled('img')({
@@ -83,11 +81,11 @@ const DialogBox = ({ openDialog, setopenDialog, ComapnyInfo }) => {
                 <Box style={{ background: '#FFFFFF' }}>
 
                     <Box>
-                        <Wrapper>
+                        <Wrapper className="flex justify-between">
                             <Image_main src={sample_image} alt="" />
-                            <Text>{ComapnyInfo.CompanyName}</Text>
-                            <Follow />
-                            <Cancel onClick={HandleClose}>
+                            <Text>{companyName}</Text>
+                            {/* <Follow /> */}
+                            <Cancel onClick={HandleClose} className="mx-1">
                                 <CancelIcon />
                             </Cancel>
                         </Wrapper>
@@ -99,7 +97,7 @@ const DialogBox = ({ openDialog, setopenDialog, ComapnyInfo }) => {
                     </LikeBox>
                     <Like>Liked by <b>Deni_001</b> and  <b>Others</b></Like>
                     <Info>
-                        <Bio ComapnyInfo={ComapnyInfo} />
+                        <Bio ComapnyInfo={companyDomain} />
                     </Info>
                 </Box>
             </DialogStyle>

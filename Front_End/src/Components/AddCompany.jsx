@@ -19,6 +19,7 @@ const  AddCompany = () => {
     const [total_vacancy, setTotal_vacancy] = useState(0);
     const [company_address, setCompany_address] = useState("");
     const [description, setDescription] = useState("");
+    const [company_site, setCompany_site] = useState("");
 
     const handleProfilePictureChange = (e) => {
         const file = e.target.files[0];
@@ -52,6 +53,9 @@ const  AddCompany = () => {
     const handleVacancyChange = (e) => {
         setTotal_vacancy(e.target.value);
     };
+    const handleSiteChange = (e) => {
+        setCompany_site(e.target.value);
+    };
     const handleAddressChange = (e) => {
         setCompany_address(e.target.value);
     };
@@ -64,6 +68,7 @@ const  AddCompany = () => {
         const formData = new FormData();
         formData.append("name",name);
         formData.append("company_mail",company_mail);
+        formData.append("company_site",company_site);
         formData.append("domain",domain);
         formData.append("hiring",hiring);
         formData.append("hiring_domain",hiring_domain);
@@ -136,6 +141,23 @@ const  AddCompany = () => {
                         </div>
                     </div>
                     <div className="flex flex-wrap p-2 max-mx-3">
+                    <div className="w-full px-3 mb-6  md:mb-0">
+                            <label className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" htmlFor="grid-company-email">
+                                Company WebSite
+                            </label>
+                            <input  className="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" 
+                                    id="grid-company-email" 
+                                    type="string" 
+                                    placeholder="www.google.com"
+                                    name="company_site"
+                                    value={company_site}
+                                    onChange={handleSiteChange}
+                                    required 
+                            />
+                        </div>
+                        </div>
+                    <div className="flex flex-wrap p-2 max-mx-3">
+                    
                         <div className="w-full px-3">
                             <label className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" htmlFor="grid-domain" >
                                 Domain
