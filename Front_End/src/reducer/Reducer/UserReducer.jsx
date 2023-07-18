@@ -197,6 +197,12 @@ export const userReducer = createReducer({}, (builder) => {
       state.loading=false;
     }).addCase('otherUserunfollowitFail',(state,action)=>{
       state.loading=false;
+    }).addCase('reellikeRequest',(state)=>{
+      state.loading=true;
+    }).addCase('reellikeSuccess',(state,action)=>{
+      state.loading=false;
+    }).addCase('reellikeFail',(state)=>{
+      state.loading=false;
     })
   builder.addCase("clearError", (state) => {
     state.error = null;

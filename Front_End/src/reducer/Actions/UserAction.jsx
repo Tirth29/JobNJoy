@@ -437,3 +437,30 @@ export const updateProfile =
       console.log('error : ',error)
     }
   };
+
+  export const reellike = (_id) => async (dispatch) => {
+    try {
+     
+      dispatch({
+        type: "reellikeRequest",
+      });
+      
+     
+      const { data } = await axios.post(`${server}/api/reel/liked`,{_id},{
+        withCredentials: true,
+      });
+      console.log('here')
+      dispatch({
+        type: "reellikeSuccess",
+        payload: data,
+      });
+      
+      console.log(data);
+    } catch (error) {
+      dispatch({
+        type: "reellikeFail",
+        payload: "no able to get like"
+      });
+      console.log('error : ',error)
+    }
+  };
