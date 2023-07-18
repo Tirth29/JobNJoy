@@ -85,7 +85,7 @@ const  AddCompany = () => {
         dispatch(addcompany(formData));
         // console.log("New Company Added")
 
-        // navigate("/Admin");
+        navigate("/Admin");
     }
 
 

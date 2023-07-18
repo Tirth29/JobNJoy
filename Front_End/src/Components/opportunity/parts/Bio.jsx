@@ -34,7 +34,7 @@ const MoreInfo = styled(Typography)`
     
 `
 
-const Bio = ({ ComapnyInfo }) => {
+const Bio = ({ ComapnySite }) => {
 
     const navigate = useNavigate();
 
@@ -43,16 +43,16 @@ const Bio = ({ ComapnyInfo }) => {
 
         <Box>
              <Typography style={{margin:'3px 0px 2px 10px'}}>
-               Web Site : <a href={ComapnyInfo} style={{color:'blue',textDecoration:'underline',fontSize:'15px'}}>Youtube.com</a>
+               Web Site : <a href={ComapnySite} style={{color:'blue',textDecoration:'underline',fontSize:'15px'}}>Youtube.com</a>
             </Typography>
             <Head >Fields For Opportunity :</Head>
             <Box style={{margin:'0px 70px 2px 20px',padding:'2px 2px 3px 3px'}}>    
-                <Typography style={{fontWeight:'550'}}>{ComapnyInfo}</Typography>
+                <Typography style={{fontWeight:'550'}}>{ComapnySite}</Typography>
                     
             </Box>
             <More>
                 <Typography style={{fontFamily:'Verdana',}}>
-                    {ComapnyInfo}
+                    {ComapnySite}
                 </Typography>
             </More>
            

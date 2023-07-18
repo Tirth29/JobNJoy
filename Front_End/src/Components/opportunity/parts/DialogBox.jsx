@@ -6,7 +6,7 @@ import Likepanel from "./panel";
 import Bio from "./Bio";
 import Follow from "./follow";
 
-const DialogBox = ({ openDialog, setopenDialog, companyDomain,companyName }) => {
+const DialogBox = ({ openDialog, setopenDialog, companyDomain,companyName,companySite }) => {
 
     
     const HandleClose = () => {
@@ -97,7 +97,7 @@ const DialogBox = ({ openDialog, setopenDialog, companyDomain,companyName }) => 
                     </LikeBox>
                     <Like>Liked by <b>Deni_001</b> and  <b>Others</b></Like>
                     <Info>
-                        <Bio ComapnyInfo={companyDomain} />
+                        <Bio ComapnySite={companySite} />
                     </Info>
                 </Box>
             </DialogStyle>

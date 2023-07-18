@@ -3,7 +3,6 @@ import { useState,useEffect } from 'react'
 import sample_image from '../../opportunity/sample_picture.jpg'
 import { Box, Typography, styled } from '@mui/material'
 import DialogBox from './DialogBox'
-import Company from './company/Company'
 import { useDispatch ,useSelector } from 'react-redux';
 import { loadCompany } from "../../../reducer/Actions/UserAction";
 
@@ -44,16 +43,16 @@ const Header = () => {
     useEffect (()=>{
         const timer = setTimeout (()=>{
             dispatch(loadCompany());
-        },50000);
+        },5000);
         return ()=> clearTimeout(timer);
     });
     const {company} = useSelector((state) => state.user)
-    // console.log(company);
+    console.log(company);
 
     const [openDialog, setopenDialog] = useState(false)
     const [name,setName] = useState(null);
     const [hiring_domain, setHiring_domain] = useState(null);
-
+    const [company_site,setCompany_site] = useState("abc.com")
     const [ComapnyInfo, SetCompanyInfo] = useState({
         CompanyName: 'Project_industryoaoaoao',
         Fields: ['Web Design', 'App Design', 'AutoMation'],
@@ -77,6 +76,7 @@ const Header = () => {
                         setopenDialog={setopenDialog}
                         companyDomain={hiring_domain}
                         companyName={name}
+                        companySite={company_site}
                          />
                 <div className=' my-10 rounded flex justify-around sm:mx-20' >
                         {company?.map((company)=>(
