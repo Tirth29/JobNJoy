@@ -1,7 +1,7 @@
 import{useEffect, useState} from "react";
 import MyPostImage from "../Components/MyPostImage";
 import { useDispatch, useSelector } from "react-redux";
-import { otherUserPost } from "../reducer/Actions/UserAction";
+import { addfollower, otherUserPost,deletefollower } from "../reducer/Actions/UserAction";
 // export const myPosts = [
 //   {
 //     id: 1,
@@ -34,19 +34,35 @@ import { otherUserPost } from "../reducer/Actions/UserAction";
 // ];
 function Profile({navigation}) {
   const dispatch = useDispatch();
-  const {profile} = useSelector((state) => state.user);
+  const {profile,user} = useSelector((state) => state.user);
   const Profile = profile;
   const [follow, setFollow] = useState(false);
   const setFollowbuton = () => {
-      setFollow(!follow);
+    console.log('id : ',Profile[0].username)
+      if(!follow){
+        dispatch(addfollower(Profile[0].username))
+        setFollow(true)
+      }
+      else  {
+        dispatch(deletefollower(Profile[0].username))
+      setFollow(false)
+      }
   };
   // console.log("1s finished")
+  console.log('user : ',user)
+  console.log('profile : ',profile[0])
   useEffect(() => {
     const timer = setTimeout(() => {
       dispatch(otherUserPost(Profile[0]?.username));
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(()=>{
+    const available = Profile[0]?.follower.includes(user.username)
+    console.log('available : ',available)
+    setFollow(available)
+  },[])
   const {otheruserpost} = useSelector((state) => state.user);
   // console.log(otheruserpost)
   return  (

@@ -15,6 +15,7 @@ function Profile(
   // console.log(posts.length)
   const myPosts = posts;
   // console.log(myPosts);
+  console.log('isAuthenticated : ',isAuthenticated)
   
   useEffect(() => {
     const timer = setTimeout(() => {

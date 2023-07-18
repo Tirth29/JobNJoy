@@ -10,7 +10,7 @@ import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { otheruserProfile,addlikes, dislikes, addfollower, deletefollower } from "../reducer/Actions/UserAction";
+import { otheruserProfile,addlikes, dislikes, addfollower, deletefollower, loadUser } from "../reducer/Actions/UserAction";
 
 
 
@@ -23,9 +23,13 @@ function PostCard({post,navigation,likes }) {
   const dispatch = useDispatch();
 
  
-  const user = useSelector((state)=>state.user.user);
+  const { user,isAuthenticated } = useSelector((state) => state.user);
+  
   // const likes = useSelector((state)=>state.user.like)
 
+//   useEffect(()=>{
+//     dispatch(loadUser());
+// },[])
   
   const navigate = useNavigate();
   const [follow, setFollow] = useState(false);
@@ -58,8 +62,10 @@ function PostCard({post,navigation,likes }) {
     setIsSave(!isSave);
   };
 
+  
+
   useEffect(()=>{
-   
+   console.log('user like :',user)
     const availible = likes.includes(user._id)
     if(availible){
       // console.log('availible : ',availible)
@@ -68,9 +74,12 @@ function PostCard({post,navigation,likes }) {
 
   })
   useEffect(()=>{
-    console.log('user : ',user.following)
+    console.log('user : ',user)
+    console.log('userfollowing : ',user.following)
+    console.log('isAuthenticated : ',isAuthenticated)
       const availible = user.following.includes(post.username)
       console.log('availehs : ',availible)
+
       if(availible){
         setFollow(true)
       }
