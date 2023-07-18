@@ -37,15 +37,20 @@ function Profile({navigation}) {
   const {profile,user} = useSelector((state) => state.user);
   const Profile = profile;
   const [follow, setFollow] = useState(false);
+  const [countfollower,setcountfollower]=useState(Profile[0]?.follower?.length)
+
+  
   const setFollowbuton = () => {
     console.log('id : ',Profile[0].username)
       if(!follow){
         dispatch(addfollower(Profile[0].username))
         setFollow(true)
+        setcountfollower(countfollower+1)
       }
       else  {
         dispatch(deletefollower(Profile[0].username))
       setFollow(false)
+      setcountfollower(countfollower-1)
       }
   };
   // console.log("1s finished")
@@ -85,7 +90,7 @@ function Profile({navigation}) {
             <button className="font-semibold text-base text-white px-2 bg-[#9659cf] rounded-lg">
               Follower
             </button>
-            <p className="font-semibold text-base text-black">{Profile[0]?.follower?.length}</p>
+            <p className="font-semibold text-base text-black">{countfollower}</p>
           </div>
           <div className="flex flex-col justify-start space-x-4 mb-2 lg:justify-start m-2">
             <button className="font-semibold text-base text-white px-2 bg-[#9659cf] rounded-lg">
