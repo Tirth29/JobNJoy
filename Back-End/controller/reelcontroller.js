@@ -6,12 +6,12 @@ export const like = async(req,res)=>{
         console.log('user : ',req.user._id);
         console.log('sender : ',req.body._id)
 
-        const Reel = await Reels.findById(req.body._id)
+        const Reel = await Reels.findOne({_id:req.body._id})
 
         console.log("reel : ",Reel)
 
         Reel.likes.push(req.user._id)
-        await Reel.findByIdAndUpdate(req.body._id,{likes:Reel.likes})
+        await Reels.findOneAndUpdate({_id:req.body._id},{likes:Reel.likes})
 
         return res.status(200).json('liked reel')
 
@@ -31,7 +31,7 @@ export const dislike = async(req,res)=>{
 
        const index = Reel.likes.indexOf(req.user._id)
        Reel.likes.splice(index)
-        await Reel.findByIdAndUpdate(req.body._id,{likes:Reel.likes})
+        await Reels.findByIdAndUpdate(req.body._id,{likes:Reel.likes})
 
         return res.status(200).json('disliked reel')
     }catch(err){

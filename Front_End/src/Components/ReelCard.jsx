@@ -239,14 +239,23 @@ import {
 } from "react-icons/ai";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { like } from "../reducer/Actions/UserAction";
 
 const ReelCard = ({ reel }) => {
+
+
+  const dispatch = useDispatch()
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef();
   const [isBookmarked, setIsBookMarked] = useState(false);
 
+  console.log('reel : ',reel)
   const LikeReel = () => {
-    setIsBookMarked(!isBookmarked);
+   if(!isBookmarked){
+      dispatch(like(reel._id))
+      
+   }
   };
 
   const startVideo = () => {

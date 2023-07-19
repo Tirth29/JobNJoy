@@ -168,14 +168,14 @@ export const userReducer = createReducer({}, (builder) => {
       state.loading = false;
       state.allreels = action.payload;
     })
-    // .addCase('ReellikeRequest',(state)=>{
-    //   state.loading=true;
-    // })
-    // .addCase('ReellikeSuccess',(state)=>{
-    //   state.loading=false;
-    // }).addCase('ReellikeRequestFailure',(state)=>{
-    //   state.loading=false
-    // });
+    .addCase('ReellikeRequest',(state)=>{
+      state.loading=true;
+    })
+    .addCase('ReellikeSuccess',(state)=>{
+      state.loading=false;
+    }).addCase('ReellikeRequestFailure',(state)=>{
+      state.loading=false
+    });
   builder.addCase("clearError", (state) => {
     state.error = null;
   });
