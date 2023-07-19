@@ -238,25 +238,47 @@ import {
   AiOutlineProfile,
 } from "react-icons/ai";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { like } from "../reducer/Actions/UserAction";
+import { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { dislike, like } from "../reducer/Actions/UserAction";
 
 const ReelCard = ({ reel }) => {
 
 
   const dispatch = useDispatch()
+  const [countlike,setcountlike] = useState()
+  const {user}  = useSelector((state)=>state.user)
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef();
   const [isBookmarked, setIsBookMarked] = useState(false);
-
+  
   console.log('reel : ',reel)
+  console.log('user : ',user)
   const LikeReel = () => {
    if(!isBookmarked){
       dispatch(like(reel._id))
-      
+      setIsBookMarked(true)
+      setcountlike(countlike+1)
+
+   }
+   else{
+    dispatch(dislike(reel._id))
+    setIsBookMarked(false)
+    setcountlike(countlike-1)
    }
   };
+
+  useEffect(()=>{
+    const available = reel.likes.includes(user._id)
+    console.log('available : ',available)
+    if(available){
+      setIsBookMarked(true)
+    }
+    else{
+      setIsBookMarked(false)
+    }
+    setcountlike(reel.likes.length)
+  },[])
 
   const startVideo = () => {
     setIsPlaying(true);
@@ -293,7 +315,7 @@ const ReelCard = ({ reel }) => {
                   ) : (
                     <AiOutlineHeart />
                   )}
-                  <p className="text-sm">{reel.likes.length}</p>
+                  <p className="text-sm">{countlike}</p>
                 </button>
                 <button className="text-4xl my-1">
                   <AiOutlineComment />

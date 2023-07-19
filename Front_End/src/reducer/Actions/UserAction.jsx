@@ -406,3 +406,31 @@ export const updateProfile =
       console.log('error : ',error)
     }
   };
+
+  export const dislike = (_id) => async (dispatch) => {
+    try {
+     
+      dispatch({
+        type: "reeldislikeRequest",
+      });
+      
+     
+      const { data } = await axios.post(`${server}/api/reel/dislikereel`,{_id},{
+        withCredentials: true,
+      });
+      console.log(data);
+      console.log('here')
+      dispatch({
+        type: "reeldislikeSuccess",
+        payload: data,
+      });
+      
+      console.log(data);
+    } catch (error) {
+      dispatch({
+        type: "reeldislikeFail",
+        payload: "no able to get like"
+      });
+      console.log('error : ',error)
+    }
+  };
