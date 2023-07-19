@@ -8,34 +8,119 @@ import TurnedInNotOutlinedIcon from "@mui/icons-material/TurnedInNotOutlined";
 import TurnedInOutlinedIcon from "@mui/icons-material/TurnedInOutlined";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Follow from "./opportunity/parts/follow";
-import { useDispatch, useSelector } from "react-redux";
-import { otheruserProfile } from "../reducer/Actions/UserAction";
-import { useMessageAndErrorUser } from "../Utils/Hooks";
 
-function PostCard({post,navigation }) {
+import { useDispatch, useSelector } from "react-redux";
+import { otheruserProfile,addlikes, dislikes, addfollower, deletefollower, loadUser } from "../reducer/Actions/UserAction";
+
+function PostCard({post,navigation,likes }) {
+ 
+ 
   const dispatch = useDispatch();
+ 
+  const { user,isAuthenticated } = useSelector((state) => state.user);
+  
+  // const likes = useSelector((state)=>state.user.like)
+
+//   useEffect(()=>{
+//     dispatch(loadUser());
+// },[])
+  
   const navigate = useNavigate();
   const [follow, setFollow] = useState(false);
   const setFollowbuton = () => {
-    setFollow(!follow);
+    if(!follow){
+      dispatch(addfollower(post.username))
+      setFollow(true)
+    }
+    else{
+      dispatch(deletefollower(post.username))
+      setFollow(false)
+    }
   };
   const [isLike, setIsLike] = useState(false);
   const OnLike = () => {
-    setIsLike(!isLike);
+    if(isLike == true){
+      setIsLike(false)
+        dispatch(dislikes(post._id));
+        // console.log('likes1 : ',isLike)   
+    }else
+    {
+      dispatch(addlikes(post._id))
+      setIsLike(true);
+    }
+    // console.log('likes : ',isLike)
+
   };
   const [isSave, setIsSave] = useState(false);
   const OnSave = () => {
     setIsSave(!isSave);
   };
+
+  
+
+  useEffect(()=>{
+   console.log('user like :',user)
+    const availible = likes.includes(user._id)
+    if(availible){
+      // console.log('availible : ',availible)
+      setIsLike(availible)
+    }
+  })
+  useEffect(()=>{
+    console.log('user : ',user)
+    console.log('userfollowing : ',user.following)
+    console.log('isAuthenticated : ',isAuthenticated)
+      const availible = user.following.includes(post.username)
+      console.log('availehs : ',availible)
+
+      if(availible){
+        setFollow(true)
+      }
+  })
+  // useEffect(()=>{
+   
+  //       dispatch(checkLikes(post._id))
+       
+      
+  // },[dispatch])
+  // const setlike = () =>{
+   
+  //   const timer = setTimeout(() => {
+  //    if(state.check)
+  //    {
+  //     console.log('state : ',state.check,'post : ',post)
+  //    }
+  //     setIsLike(state.check)
+
+  //    if(isLike)
+  //    {
+  //     console.log('like : ',isLike)
+  //    }
+  //   }, 2000);
+  //   return () => clearTimeout(timer)
+  // }
+  // setlike()
+  
+ 
+//  const timer =setTimeout(() => {
+//   const checks  = useSelector((state) => state.checks);
+//   console.log('checks : ',checks)
+//  }, 2000);
+
+
+  
+  
   // const {profile} = getOtherUserProfile(navigation,dispatch,post.username,"visitprofile");
   // const {loading} = useSelector((state) => state.user);
   // const loading = useMessageAndErrorUser(navigation,dispatch,"visitprofile");
   const GoToProfile = async() => {
     console.log(post.username);
-    await dispatch(otheruserProfile(post.username));
+      await dispatch(otheruserProfile(post.username))
     navigate("/visitprofile")
   };
+
+ 
+  
   return (
     <div className="lg:mx-[500px]" >
       <div className="flex flex-row mt-3 mb-1 ml-2 ">
@@ -100,6 +185,7 @@ function PostCard({post,navigation }) {
         <p>View all {post?.comments} comments..</p>
       </div>
     </div>
+    
   );
 }
 

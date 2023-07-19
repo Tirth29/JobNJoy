@@ -5,7 +5,6 @@ import PostHeader from "../Components/PostHeader";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { otherPost } from "../reducer/Actions/UserAction";
-import FinalFooter from "../Components/FinalFooter";
 
 // const Posts = [
 //   {
@@ -100,17 +99,18 @@ function Post() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShouldRender(true);
-    }, 2000);
+    }, 4000);
     return () => clearTimeout(timer);
   }, []);
   // console.log(otherposts)
-  const Posts = otherposts;
+ 
   // console.log(Posts);
   useEffect(() => {
     // setTimeout(() => {
       dispatch(otherPost());
     // }, 1000);
   }, [dispatch]);
+  const Posts = otherposts;
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -123,7 +123,7 @@ function Post() {
       const shuffled = shuffleArray(Posts.slice(0, Posts.length - 1));
       setShuffledPosts(shuffled);
       console.log(shuffledPosts); // You can do whatever you want with the shuffled array here
-    }, 1000);
+    }, 2000);
     return () => clearTimeout(shuffleTimer);
   }, [Posts]);
   
@@ -132,11 +132,11 @@ function Post() {
       <PostHeader />
       <motion.div className="pt-10">
         {shuffledPosts.map((post) => (
-          <PostCard key={post._id} post={post} />
+          <PostCard key={post._id} post={post} likes={post.likes}/>
         ))}
-        <div className="w-20 h-20 text-5xl"> Helllloooooo</div>
+       
+       
       </motion.div>
-      <FinalFooter/>
     </div>
   ):null;
 }
