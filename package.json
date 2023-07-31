@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "framer-motion": "^10.15.0",
+    "react-dropzone": "^14.2.3",
+    "react-image-crop": "^10.1.5",
+    "react-player": "^2.12.0"
+  }
+}
