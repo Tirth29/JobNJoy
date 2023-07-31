@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LockIcon from "@mui/icons-material/Lock";
 import EmailIcon from "@mui/icons-material/Email";
@@ -39,7 +39,16 @@ const Login = ({ navigation }) => {
     dispatch(login(username,email, password));
     console.log("Login");
   };
-
+  useEffect(()=>{
+    const keyDownHandler = event => {
+      console.log(`user pressed ${event.key}`)
+      if (event.key ==="Enter"){
+        event.preventDefault();
+        HandleLoginSubmit();
+      }
+    };
+    document.addEventListener('keydown',keyDownHandler);
+  })
   return (
     <>
       <div className="h-screen flex items-center justify-center bg-gradient-to-b from-violet-400 to-fuchsia-100">
